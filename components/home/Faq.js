@@ -34,7 +34,7 @@ Chaindustry's DoToEarn has made it possible for users to start earning in differ
   ];
 
   return (
-    <div>
+    <div className="mx-auto max-w-[791px]">
       <div className="font-sfSemibold text-[32px] text-center leading-[125%] tracking-[-0.05em] mb-[24px]">
         Frequently Asked Questions
       </div>
@@ -60,7 +60,7 @@ Chaindustry's DoToEarn has made it possible for users to start earning in differ
                 <motion.h2
                   layout="position"
                   className={`${
-                    isActive ? "mb-[16px]" : ""
+                    isActive ? "mb-[16px] text-white" : "text-grey-20"
                   } flex justify-between text-[16px] font-sfLight leading-[150%] tracking-[-0.02em]`}
                 >
                   {faq.title}

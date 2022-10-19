@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const Join = () => {
   return (
     <motion.div
-      layout="position"
+      //   layout="position"
       className="h-[300px]
   "
     >
