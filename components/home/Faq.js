@@ -1,0 +1,99 @@
+import React, { useState } from "react";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+import { ArrowDown, ArrowDown2 } from "iconsax-react";
+const Faq = () => {
+  const [clicked, setClicked] = useState(null);
+  const faqs = [
+    {
+      id: 1,
+      title: "How do i get started?",
+      text: `To get started, visit chaindustry.io and join our communities to participate in our DoToEarn activities until the app is launched where you can sign up and fully participate in chaindustry's DoToEarn.`,
+    },
+    {
+      id: 2,
+      title: "How can i join chaindustry as a user?",
+      text: "We have made joining our digital legion as less complicated as possible. Start with following/joining our official media communities, our and our partners community.",
+    },
+    {
+      id: 3,
+      title: "How can i join chaindustry as a partner?",
+      text: "To become a partner, please contact the CEO or any of the team member to discuss terms of partnership and mutual benefits for both parties.",
+    },
+    {
+      id: 4,
+      title: "What is chaindustry DoToEarn?",
+      text: `Our DoToEarn concept entails leveraging on simple task that can be done anywhere for free.
+
+Chaindustry's DoToEarn has made it possible for users to start earning in different sectors varying from EngageToEarn, PromoteToearn, ChatToEarn, ReferToEarn, VoteToEarn, LearnToEarn, StreamToEarn, StakeToEarn, PostToEarn, SleepToEarn and more to come.`,
+    },
+    {
+      id: 5,
+      title: "Do i need a start up capital to join chaindustry as a user?",
+      text: "No you do not need a capital to join us. Chaindustry platform is free and open to all active and intending users.",
+    },
+  ];
+
+  return (
+    <div>
+      <div className="font-sfSemibold text-[32px] text-center leading-[125%] tracking-[-0.05em] mb-[24px]">
+        Frequently Asked Questions
+      </div>
+      <LayoutGroup>
+        <motion.div layout>
+          {faqs.map((faq, id) => {
+            let isActive = clicked?.id === faq.id;
+            return (
+              <motion.div
+                layout
+                onClick={() => {
+                  if (isActive) {
+                    setClicked(null);
+                  } else {
+                    setClicked(faq);
+                  }
+                }}
+                key={id}
+                className={`bg-[#110227] ${
+                  !isActive && "hover:bg-[#39176A] "
+                } rounded-[8px] p-[16px] mb-[8px]`}
+              >
+                <motion.h2
+                  layout="position"
+                  className={`${
+                    isActive ? "mb-[16px]" : ""
+                  } flex justify-between text-[16px] font-sfLight leading-[150%] tracking-[-0.02em]`}
+                >
+                  {faq.title}
+                  <motion.div
+                    className="ml-[20px] flex justify-between items-center"
+                    animate={{
+                      rotate: isActive ? 180 : 0,
+                      transformOrigin: "center",
+                    }}
+                  >
+                    <ArrowDown2 size={20} color="#8D5CEB" variant="Outline" />
+                  </motion.div>
+                </motion.h2>
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.p
+                      layout="position"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="text-grey-20 text-[12px] font-sfLight leading-[160%] tracking-[-0.02em]"
+                    >
+                      {faq.text}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </LayoutGroup>
+    </div>
+  );
+};
+
+export default Faq;

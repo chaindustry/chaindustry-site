@@ -2,11 +2,19 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import AppButton from "../button/AppButton";
 import Header from "../Header";
 import OnBoard from "./OnBoard";
-import { useScroll, useTransform, motion, useSpring } from "framer-motion";
+import {
+  useScroll,
+  useTransform,
+  motion,
+  useSpring,
+  LayoutGroup,
+} from "framer-motion";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Cards from "./Cards";
 import Image from "next/image";
+import Faq from "./Faq";
+import Join from "./Join";
 
 const Home = () => {
   const [constants, setConstants] = useState({
@@ -319,102 +327,15 @@ const Home = () => {
         </div>
       </section>
       <ScrollContent />
-      {/* <div className="overflow-hidden"> */}
-      <OnBoard />
-      {/* </div> */}
+
+      <LayoutGroup>
+        <OnBoard />
+        <Faq />
+        <Join />
+        hii
+      </LayoutGroup>
     </div>
   );
 };
 
 export default Home;
-// useEffect(() => {
-//   let callback = (entries, observer) => {
-//     console.log("Observing");
-//     entries.forEach((entry) => {
-//       // console.log(entry);
-//       if (!entry?.isIntersecting) {
-//         const rootDivId = entry?.target?.parentElement?.id;
-//         const rootDiv = document.getElementById(rootDivId);
-
-//         const exitingChild = entry;
-//         const target = exitingChild?.target;
-//         const element = target?.lastElementChild?.innerText;
-//         console.log(constants);
-//         if (!rootDivId) return;
-//         // let rowArr = constants[rootDivId].filter((c) => c !== element);
-//         // rowArr.push(element);
-//         // // console.log(`${element} from ${rootDivId}`);
-//         // if (rootDivId === "row1") {
-//         //   console.log(`New ${rootDivId} array is ${rowArr}`);
-//         //   return setConstants({
-//         //     row1: rowArr,
-//         //     row2: [...constants.row2],
-//         //     row3: [...constants.row3],
-//         //   });
-//         // }
-//         // if (rootDivId === "row2") {
-//         //   console.log(`New ${rootDivId} array is ${rowArr}`);
-//         //   return setConstants({
-//         //     row1: [...constants.row1],
-//         //     row2: rowArr,
-//         //     row3: [...constants.row3],
-//         //   });
-//         // }
-//         // if (rootDivId === "row3") {
-//         //   console.log(`New ${rootDivId} array is ${rowArr}`);
-//         //   setConstants({
-//         //     row1: [...constants.row1],
-//         //     row2: [...constants.row2],
-//         //     row3: rowArr,
-//         //   });
-//         // }
-//         // // if (rootDivId) {
-//         // //   let rowArr = [
-//         // //     ...constants[rootDivId].filter((c) => c !== element),
-//         // //     element,
-//         // //   ];
-//         // //   console.log(rootDiv);
-//         // //   switch (rootDivId) {
-//         // //     case "row1":
-//         // //       console.log(rowArr);
-//         // //       return setConstants({
-//         // //         row1: rowArr,
-//         // //         row2: [...constants.row2],
-//         // //         row3: [...constants.row3],
-//         // //       });
-//         // //   }
-//         // // }
-//         // const clonedElement = target.cloneNode(true);
-//         // console.log(exitingChild);
-//         // if (rootDivId) {
-//         //   // target.remove();
-//         //   rootDiv.appendChild(clonedElement);
-//         //   console.log(exitingChild);
-//         // }
-//       }
-//       // Each entry describes an intersection change for one observed
-//       // target element:
-//       //   entry.boundingClientRect
-//       //   entry.intersectionRatio
-//       //   entry.intersectionRect
-//       //   entry.isIntersecting
-//       //   entry.rootBounds
-//       //   entry.target
-//       //   entry.time
-//     });
-//   };
-//   let observerOptions = {
-//     root: circleRef?.current,
-//     threshold: 0.1,
-//     rootMargin: "0px",
-//   };
-//   let elementToObserve = document.getElementsByClassName("card");
-//   let observer = new IntersectionObserver(callback, observerOptions);
-//   Array.from(elementToObserve).forEach((element) => {
-//     observer?.observe(element);
-//   });
-//   return () =>
-//     Array.from(elementToObserve).forEach((element) => {
-//       observer?.unobserve(element);
-//     });
-// }, []);

@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
       ></div>
 
       {/* Main app */}
-      <main className="container relative z-[1] px-4 m-auto xl:w-[1200px] 2xl:w-[1300px] ">
+      <main className="container relative z-[1] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px] ">
         <Component {...pageProps} />
       </main>
     </div>
