@@ -140,6 +140,9 @@ a {
   -moz-filter: blur(241px);
   -ms-filter: blur(241px);
   filter: blur(241px);
+  -webkit-backface-visibility: visible; /* Safari */
+  backface-visibility: visible;
+  transform: translate3d(0, 0, 0);
 }
 
 /* @media (prefers-color-scheme: dark) {
