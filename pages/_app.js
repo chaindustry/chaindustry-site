@@ -24,13 +24,13 @@ function MyApp({ Component, pageProps }) {
     <div className="overflow-x-hidden relative">
       {/* Background blur filter */}
       <div
-        className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 left-[-250px] blur-[241.5px]
+        className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]
       lg:top-[249px] lg:left-0 lg:h-[831px] lg:w-[422px]
       "
       ></div>
       {/* Bg blur filter */}
       <div
-        className="absolute w-[422px] h-[831px] top-[-74px] right-[-127px] blur-[241px] border-[128px] border-secondary-50/40
+        className="absolute w-[422px] h-[831px] top-[-74px] right-[-127px] blur-[241px] border-[128px] saf-blur border-secondary-50/40
       lg:top-[-74px] lg:right-[-104px]
       "
       ></div>

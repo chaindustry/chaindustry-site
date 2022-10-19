@@ -135,6 +135,12 @@ a {
 * {
   box-sizing: border-box;
 }
+.saf-blur {
+  -webkit-filter: blur(241px);
+  -moz-filter: blur(241px);
+  -ms-filter: blur(241px);
+  filter: blur(241px);
+}
 
 /* @media (prefers-color-scheme: dark) {
   html {
