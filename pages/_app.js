@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import "../styles/globals.css";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
 function MyApp({ Component, pageProps }) {
   //  width: 422px;
   // height: 831px;
@@ -10,16 +9,7 @@ function MyApp({ Component, pageProps }) {
 
   // border: 128px solid rgba(222, 53, 97, 0.4);
   // filter: blur(241.5px);
-  gsap.registerPlugin(ScrollTrigger);
-  useEffect(() => {
-    gsap.to("#__next", {
-      scrollBehavior: "smooth",
-      scrollTrigger: {
-        trigger: "#__next",
-        scrub: 190,
-      },
-    });
-  }, []);
+
   return (
     <div className="overflow-x-hidden relative">
       {/* Background blur filter */}
