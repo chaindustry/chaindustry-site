@@ -15,6 +15,11 @@ import Cards from "./Cards";
 import Image from "next/image";
 import Faq from "./Faq";
 import Join from "./Join";
+import Available from "./Available";
+import Upgrade from "./Upgrade";
+import Link from "next/link";
+import { appName } from "../../variables";
+import Footer from "./Footer";
 
 const Home = () => {
   const [constants, setConstants] = useState({
@@ -200,7 +205,6 @@ const Home = () => {
   return (
     <div ref={ref}>
       <Header />
-
       <section className="flex flex-col items-center">
         <div className="text-center mb-[40px] flex flex-col items-center">
           <div
@@ -224,8 +228,16 @@ const Home = () => {
         lg:mb-[40px]
         "
         >
-          <AppButton size="lg" label="Get Started" variant="secondary" />
-          <AppButton size="lg" label="Log In" variant="ghost" />
+          <Link href={`${appName}/signup`}>
+            <a>
+              <AppButton size="lg" label="Get Started" variant="secondary" />
+            </a>
+          </Link>
+          <Link href={`${appName}/login`}>
+            <a>
+              <AppButton size="lg" label="Log In" variant="ghost" />
+            </a>
+          </Link>
         </div>
         {/* Animation Panel for tasks */}
 
@@ -327,13 +339,14 @@ const Home = () => {
         </div>
       </section>
       <ScrollContent />
-
-      <LayoutGroup>
-        <OnBoard />
-        <Faq />
-        <Join />
-        hii
-      </LayoutGroup>
+      {/* <LayoutGroup> */}
+      <OnBoard />
+      <Upgrade />
+      <Faq />
+      <Join />
+      <Available />
+      <Footer />
+      {/* </LayoutsGroup> */}
     </div>
   );
 };
