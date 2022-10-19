@@ -77,7 +77,7 @@ const Cards = ({ constants }) => {
 
   return (
     <div
-      className="flex -rotate-[18.91deg] overflow-hidden flex-col gap-[7px] 
+      className="flex  overflow-hidden flex-col gap-[7px] 
       md:gap-[11px]
     lg:gap-[17px]
     "
