@@ -304,9 +304,10 @@ const Home = () => {
               {/* Image panel */}
               <div
                 ref={circleRef}
-                className="w-[213.25px] flex justify-center items-center scale-1 h-[213.25px] rounded-full relative bg-primary-90 overflow-hidden
+                className="w-[213.25px] -rotate-[18.91deg] flex justify-center items-center scale-1 h-[213.25px] rounded-full relative bg-primary-90 overflow-hidden
               md:w-[310px] md:h-[310px]
                lg:h-[554px] lg:w-[554px]
+               
               "
               >
                 <div id="static" className="flex  items-center">
