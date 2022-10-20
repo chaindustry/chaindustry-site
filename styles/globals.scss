@@ -135,13 +135,47 @@ a {
 * {
   box-sizing: border-box;
 }
+.hidenav {
+  transition: 0.3s;
+}
+.shownav {
+  transition: 0.3s;
+}
+.animate-bars {
+  gap: 0;
+  align-items: center;
+  transition: 0.1s;
+  .bar {
+    transition: 0.3s;
+    transition-delay: 0.3s;
+    transition-property: transform;
+    width: 24px;
+    border-radius: 100px;
+    &:first-child {
+      transform: rotate(-220deg);
+    }
+    &:last-child {
+      transform: rotate(220deg);
+    }
+  }
+}
+.reshape-bars {
+  transition: 0.1s;
+  transition-delay: 0.3s;
+  transition-property: gap align-items;
+  .bar {
+    transition: 0.3s;
+    transition-delay: 0.3s;
+    transition-property: transform width;
+  }
+}
 .saf-blur {
   -webkit-filter: blur(241px);
   -moz-filter: blur(241px);
   -ms-filter: blur(241px);
   filter: blur(241px);
-  -webkit-backface-visibility: visible; /* Safari */
-  backface-visibility: visible;
+  /* -webkit-backface-visibility: visible;  */
+  /* backface-visibility: visible; */
   transform: translate3d(0, 0, 0);
 }
 p,

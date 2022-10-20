@@ -6,22 +6,23 @@ export const CarouselItem = ({ children }) => {
 
 const Carousel = ({ children, xsclass }) => {
   const [active, setActive] = useState(0);
-  const updateIndex = (newindex) => {
-    if (newindex < 0) {
-      newindex = React.Children.count(children) - 1;
-    } else if (newindex >= React.Children.count(children)) {
-      newindex = 0;
-    }
-    setActive(newindex);
-  };
+
   useEffect(() => {
+    const updateIndex = (newindex) => {
+      if (newindex < 0) {
+        newindex = React.Children.count(children) - 1;
+      } else if (newindex >= React.Children.count(children)) {
+        newindex = 0;
+      }
+      setActive(newindex);
+    };
     const interval = setInterval(() => {
       updateIndex(active + 1);
     }, 3000);
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [active]);
+  }, [active, children]);
   return (
     <div className={`${classes.carousel} ${xsclass}`}>
       <div

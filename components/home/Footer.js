@@ -11,7 +11,7 @@ const Footer = () => {
       { label: "Our services", path: "#" },
       { label: "Team", path: "#" },
       { label: "Blog", path: "#" },
-      { label: "FAQs", path: "#" },
+      { label: "FAQs", path: "/faqs" },
     ],
     misc: [
       { label: "Terms of use", path: "#" },

@@ -1,16 +1,22 @@
 import { ArrowRight } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { Router } from "next/router";
+import React, { memo, useEffect, useState } from "react";
 import AppButton from "./button/AppButton";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
   let navs = [
     { label: "About Us", path: "/about" },
     { label: "Our services", path: "/services" },
     { label: "Blog", path: "https://www.blog.chaindustry.io" },
-    { label: "Academy", path: "https://www.academy.chaindustry.io" },
+    { label: "Academy", path: "https://www.academy.chaindustry.io" }
   ];
+  const [show, setShow] = useState(false);
+  const toggleNav = (bool) => {
+    return setShow(bool);
+  };
   //   Desktop Nav
   const LgNav = () => {
     return (
@@ -36,32 +42,45 @@ const Header = () => {
     );
   };
   let app_link = "https://chainapp.vercel.app";
+  const Logo = () => {
+    return (
+      <div
+        className="relative w-[118px] h-[24.09px]
+        md:w-[140px] md:h-[30px]
+        lg:w-[185px] lg:h-[39px]
+        "
+      >
+        <Image
+          layout="fill"
+          src={"/logo.png"}
+          objectFit="contain"
+          priority
+          quality={100}
+          alt="Logo"
+          placeholder="blur"
+          blurDataURL="/logo.png"
+        />
+      </div>
+    );
+  };
+  const closeNav = () => {
+    setShow(false);
+  };
+  useEffect(() => {
+    Router.events.on("routeChangeStart", closeNav);
+
+    return () => Router.events.off("routeChangeStart", closeNav);
+  }, []);
   return (
     <header
-      className="mb-[108px] py-5 flex justify-between items-center 
+      className="mb-[108px] py-7 flex justify-between items-center 
     sm:py-7
     md:py-7
     lg:py-[54px] lg:mb-[90px]"
     >
       <div className="w-full max-w-[249px]">
         {" "}
-        <div
-          className="relative w-[118px] h-[24.09px]
-        md:w-[140px] md:h-[30px]
-        lg:w-[185px] lg:h-[39px]
-        "
-        >
-          <Image
-            layout="fill"
-            src={"/logo.png"}
-            objectFit="contain"
-            priority
-            quality={100}
-            alt="Logo"
-            placeholder="blur"
-            blurDataURL="/logo.png"
-          />
-        </div>
+        <Logo />
       </div>
       {/* Nav */}
       <LgNav />
@@ -81,12 +100,18 @@ const Header = () => {
       </div>
 
       {/* MObile hqmburger toggle */}
-      <div className="cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:hidden">
-        <div className="bg-[#fff] w-[26px] h-[1px]"></div>
-        <div className="bg-[#fff] w-[21px] h-[0.5px]"></div>
+      <div
+        className={`relative z-[106] cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:hidden ${
+          show ? "animate-bars" : "reshape-bars"
+        }`}
+        onClick={() => toggleNav(show ? false : true)}
+      >
+        <div className="bg-[#fff] w-[26px] h-[1px] bar"></div>
+        <div className="bg-[#fff] w-[21px] h-[1px] bar"></div>
       </div>
+      <MobileNav logo={<Logo />} navs={navs} show={show} setShow={toggleNav} />
     </header>
   );
 };
 
-export default Header;
+export default memo(Header);
