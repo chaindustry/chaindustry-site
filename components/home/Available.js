@@ -100,6 +100,7 @@ const Available = () => {
             blurDataURL="/mainapp.png"
             alt="main app"
             quality={100}
+            priority
           />
         </div>
       </div>

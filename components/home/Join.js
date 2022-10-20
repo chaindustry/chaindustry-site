@@ -18,7 +18,7 @@ const Join = () => {
       lg:text-[48px]
       "
       >
-        Join our Chaindusty community
+        Join our Chaindustry community
       </h1>
       <p
         className="text-[16px] leading-[164%] tracking-[-0.03em] text-primary-0 mx-[15px] font-sfMedium mb-[32px]
@@ -26,7 +26,7 @@ const Join = () => {
       "
       >
         Join our active community and enjoy your experience with other users
-        participating in DoToEarn
+        participating in DoToEarn tasks
       </p>
       <AppButton size="lg" variant="secondary" label="Join our community" />
     </motion.div>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect } from "react";
 import "../styles/globals.css";
 
@@ -12,6 +13,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="overflow-x-hidden relative">
+      <Head>
+        <meta name="theme-color" content="#0A0118" />
+      </Head>
       {/* Background blur filter */}
       <div
         className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]

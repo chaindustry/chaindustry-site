@@ -20,6 +20,7 @@ import Upgrade from "./Upgrade";
 import Link from "next/link";
 import { appName } from "../../variables";
 import Footer from "./Footer";
+import Reviews from "./Reviews";
 
 const Home = () => {
   const [constants, setConstants] = useState({
@@ -342,6 +343,7 @@ const Home = () => {
       {/* <LayoutGroup> */}
       <OnBoard />
       <Upgrade />
+      <Reviews />
       <Faq />
       <Join />
       <Available />
