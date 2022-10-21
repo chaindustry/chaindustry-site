@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Router } from "next/router";
 import React, { memo, useEffect, useState } from "react";
+import { appName } from "../variables";
 import AppButton from "./button/AppButton";
 import MobileNav from "./MobileNav";
 
@@ -91,12 +92,19 @@ const Header = () => {
 
       {/* Get started */}
       <div className="hidden gap-[15px] lg:flex">
-        <Link href={`${app_link}/login`}>
+        <Link
+          href={{
+            pathname: `${appName}/login`,
+            query: {
+              url_source: "landing_page"
+            }
+          }}
+        >
           <a>
             <AppButton size="lg" label="Log In" variant="ghost" />
           </a>
         </Link>
-        <Link href={`${app_link}/signup`}>
+        <Link href={`${appName}/signup`}>
           <a>
             <AppButton size="lg" label="Get Started" variant="secondary" />
           </a>

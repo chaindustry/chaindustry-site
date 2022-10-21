@@ -277,7 +277,15 @@ const Home = () => {
               <AppButton size="lg" label="Get Started" variant="secondary" />
             </a>
           </Link>
-          <Link href={`${appName}/login`}>
+          <Link
+            href={{
+              pathname: `${appName}/login`,
+              query: {
+                url_source: "landing_page",
+                referrer: "chaindustry"
+              }
+            }}
+          >
             <a>
               <AppButton size="lg" label="Log In" variant="ghost" />
             </a>

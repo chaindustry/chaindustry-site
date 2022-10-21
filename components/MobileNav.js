@@ -37,7 +37,14 @@ const MobileNav = ({ logo, navs, show, setShow }) => {
               />
             </a>
           </Link>
-          <Link href={`${appName}/login`}>
+          <Link
+            href={{
+              pathname: `${appName}/login`,
+              query: {
+                url_source: "landing_page"
+              }
+            }}
+          >
             <a>
               <AppButton
                 label="Log In"
