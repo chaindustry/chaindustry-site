@@ -1,4 +1,17 @@
 export const appName = "https://chainapp.vercel.app";
+const getTasks = [
+  "EngageToEarn",
+  "PromoteToearn",
+  "ChatToEarn",
+  "ReferToEarn",
+  "VoteToEarn",
+  "LearnToEarn",
+  "StreamToEarn",
+  "StakeToEarn",
+  "PostToEarn",
+  "SleepToEarn"
+].map((c) => ` <b>${c}</b>`);
+console.log(getTasks);
 export const faqs = [
   {
     id: 1,
@@ -20,7 +33,7 @@ export const faqs = [
     title: "What is chaindustry DoToEarn?",
     text: `Our DoToEarn concept entails leveraging on simple task that can be done anywhere for free.
 
-Chaindustry's DoToEarn has made it possible for users to start earning in different sectors varying from EngageToEarn, PromoteToearn, ChatToEarn, ReferToEarn, VoteToEarn, LearnToEarn, StreamToEarn, StakeToEarn, PostToEarn, SleepToEarn and more to come.`
+Chaindustry's DoToEarn has made it possible for users to start earning in different sectors varying from ${getTasks} and more to come.`
   },
   {
     id: 5,

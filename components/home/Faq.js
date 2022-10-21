@@ -61,7 +61,7 @@ const Faq = () => {
                     lg:text-white lg:mr-[14px]"
                     animate={{
                       rotate: isActive ? 180 : 0,
-                      transformOrigin: "center",
+                      transformOrigin: "center"
                     }}
                   >
                     <ArrowDown2 size={20} variant="Outline" />
@@ -70,16 +70,15 @@ const Faq = () => {
                 <AnimatePresence>
                   {isActive && (
                     <motion.p
+                      dangerouslySetInnerHTML={{ __html: faq.text }}
                       layout="position"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0, y: -50 }}
+                      animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
-                      className="text-grey-20 text-[12px] font-sfLight leading-[160%] tracking-[-0.02em]
+                      className="text-grey-20 text-[12px] overflow-hidden font-sfLight leading-[160%] tracking-[-0.02em] [&>a]:text-secondary-50 [&>a]:font-sfSemibold [&>b]:text-primary-30 
                       lg:text-[16px]
                       "
-                    >
-                      {faq.text}
-                    </motion.p>
+                    ></motion.p>
                   )}
                 </AnimatePresence>
               </motion.div>

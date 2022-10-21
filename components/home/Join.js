@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import AppButton from "../button/AppButton";
+import Link from "next/link";
 const Join = () => {
   return (
     <motion.div
@@ -28,7 +29,11 @@ const Join = () => {
         Join our active community and enjoy your experience with other users
         participating in DoToEarn tasks
       </p>
-      <AppButton size="lg" variant="secondary" label="Join our community" />
+      <Link href="https://linktr.ee/chaindustry">
+        <a rel="noreferrer" target={"_blank"}>
+          <AppButton size="lg" variant="secondary" label="Join our community" />
+        </a>
+      </Link>
     </motion.div>
   );
 };
