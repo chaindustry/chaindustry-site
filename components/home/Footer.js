@@ -11,17 +11,17 @@ const Footer = () => {
       { label: "Our services", path: "#" },
       { label: "Team", path: "#" },
       { label: "Blog", path: "#" },
-      { label: "FAQs", path: "/faqs" },
+      { label: "FAQs", path: "/faqs" }
     ],
     misc: [
       { label: "Terms of use", path: "#" },
-      { label: "Privacy Policy", path: "#" },
+      { label: "Privacy Policy", path: "#" }
     ],
     socials: [
       { icon: <SiDiscord size={19} />, path: "#" },
       { icon: <SiTwitter size={19} />, path: "#" },
-      { icon: <FaTelegramPlane size={21} />, path: "#" },
-    ],
+      { icon: <FaTelegramPlane size={21} />, path: "#" }
+    ]
   };
   return (
     <footer>
@@ -43,8 +43,9 @@ const Footer = () => {
           <div className="flex items-center">
             <input
               required
+              type={"email"}
               placeholder="Email"
-              className="bg-transparent px-2 outline-none w-full h-[40px] border-b-grey-50 border-b-[1px] mr-[11.5px]"
+              className="bg-transparent  px-2 outline-none w-full h-[40px] rounded-none flex-1 border-b-grey-50 border-b-[1px] mr-[11.5px]"
             />
             <button className="bg-secondary-50 border-none h-[32px] w-[32px] rounded-full flex items-center justify-center shrink-0">
               <ArrowRight size={16} />

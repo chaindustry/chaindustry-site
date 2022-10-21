@@ -44,23 +44,27 @@ const Header = () => {
   let app_link = "https://chainapp.vercel.app";
   const Logo = () => {
     return (
-      <div
-        className="relative w-[118px] h-[24.09px]
+      <Link href="/">
+        <a>
+          <div
+            className="relative w-[118px] h-[24.09px]
         md:w-[140px] md:h-[30px]
         lg:w-[185px] lg:h-[39px]
         "
-      >
-        <Image
-          layout="fill"
-          src={"/logo.png"}
-          objectFit="contain"
-          priority
-          quality={100}
-          alt="Logo"
-          placeholder="blur"
-          blurDataURL="/logo.png"
-        />
-      </div>
+          >
+            <Image
+              layout="fill"
+              src={"/logo.png"}
+              objectFit="contain"
+              priority
+              quality={100}
+              alt="Logo"
+              placeholder="blur"
+              blurDataURL="/logo.png"
+            />
+          </div>
+        </a>
+      </Link>
     );
   };
   const closeNav = () => {

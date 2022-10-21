@@ -7,7 +7,7 @@ import {
   useTransform,
   motion,
   useSpring,
-  LayoutGroup,
+  LayoutGroup
 } from "framer-motion";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -35,7 +35,7 @@ const Home = () => {
       "sleep",
       "predict",
       "learn",
-      "freelance",
+      "freelance"
     ],
     row2: [
       "chat",
@@ -48,7 +48,7 @@ const Home = () => {
       "refer",
       "learn",
       "sleep",
-      "predict",
+      "predict"
     ],
     row3: [
       "refer",
@@ -61,8 +61,8 @@ const Home = () => {
       "refer",
       "learn",
       "sleep",
-      "predict",
-    ],
+      "predict"
+    ]
   });
   gsap.registerPlugin(ScrollTrigger);
   const ref = useRef(null);
@@ -77,20 +77,20 @@ const Home = () => {
             scale: 0.2,
             duration: 4,
             transformOrigin: "top center",
-            yPercent: 40,
+            yPercent: 40
           }
         ),
 
         start: "bottom bottom",
         // end: "bottom top",
-        scrub: true, // I like the 1 sec delay, set to true for exact anime on scroll
+        scrub: true // I like the 1 sec delay, set to true for exact anime on scroll
         //markers: true,
       });
 
       gsap.fromTo(
         "#shell",
         {
-          scale: 0.8,
+          scale: 0.8
           // keyframes: {
           //   scale: 0,
           //   // opacity: [0, 0, 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
@@ -102,14 +102,14 @@ const Home = () => {
           repeatDelay: -1,
           duration: 3,
           opacity: 0,
-          delay: 0.1,
+          delay: 0.1
         }
       );
 
       gsap.fromTo(
         "#inner-shell",
         {
-          scale: 0.8,
+          scale: 0.8
           // keyframes: {
           //   scale: 0,
           //   // opacity: [0, 0, 0, 1],
@@ -121,13 +121,13 @@ const Home = () => {
           repeatDelay: -1,
           duration: 3,
           opacity: 0,
-          delay: 0.3,
+          delay: 0.3
         }
       );
       gsap.fromTo(
         "#main-shell",
         {
-          scale: 0.8,
+          scale: 0.8
           // keyframes: {
           //   scale: 0,
           //   // opacity: [0, 0, 0, 1],
@@ -139,14 +139,14 @@ const Home = () => {
           repeatDelay: -1,
           duration: 3,
           opacity: 0,
-          delay: 0,
+          delay: 0
         }
       );
 
       gsap.fromTo(
         "#static",
         {
-          scale: 1,
+          scale: 1
         },
         {
           scale: 1,
@@ -156,28 +156,28 @@ const Home = () => {
           scrollTrigger: {
             trigger: "#anim",
 
-            scrub: 1,
-          },
+            scrub: 1
+          }
         }
       );
       ScrollTrigger.create({
         trigger: "#coin3",
         animation: gsap.fromTo("#coin2", { yPercent: 50 }, { yPercent: -400 }),
         scrub: true,
-        start: "bottom bottom",
+        start: "bottom bottom"
       });
 
       ScrollTrigger.create({
         trigger: "#coin3",
         animation: gsap.fromTo("#coin3", { yPercent: 50 }, { yPercent: -100 }),
         scrub: true,
-        start: "bottom bottom",
+        start: "bottom bottom"
       });
       ScrollTrigger.create({
         trigger: "#coin3",
         animation: gsap.fromTo("#coin4", { yPercent: 50 }, { yPercent: -320 }),
         scrub: true,
-        start: "bottom bottom",
+        start: "bottom bottom"
       });
     }, ref);
 
@@ -185,19 +185,62 @@ const Home = () => {
   }, []);
 
   const ScrollContent = () => {
+    const scrollRef = useRef(null);
+
+    useEffect(() => {
+      const cont = scrollRef.current;
+      console.log(cont.scrollWidth);
+
+      let w = cont.scrollWidth;
+      const viewPortWidth = window.innerWidth;
+      let d = w - viewPortWidth + 50;
+      let ctx = gsap.context(() => {
+        gsap.fromTo(
+          ".scroll",
+          { x: 0 },
+          { x: -d, ease: "linear", duration: 40, repeat: -1, yoyo: true }
+        );
+      }, scrollRef);
+      return () => ctx.revert();
+    }, []);
+    const importAllPartners = (r) => {
+      let images = {};
+      r.keys().forEach((item, index) => {
+        images[item.replace("./", "")] = r(item);
+      });
+      return images;
+    };
+    const images = importAllPartners(
+      require.context("../../public/partners", false, /\.(png|jpe?g|svg)$/)
+    );
+
     return (
-      <section
-        className="flex gap-[60px] overflow-auto mb-[30px] mx-[-1rem] md:mx-auto 
+      <section className="perma" ref={scrollRef}>
+        <div
+          className="flex gap-[60px]  mb-[30px] mx-[-1rem] md:mx-auto pr-[100px] scroll
       md:mb-[-10px]"
-      >
-        {[...Array(50)].map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="flex shrink-0 h-[40px] w-[95.73px] bg-white/20"
-            ></div>
-          );
-        })}
+        >
+          {Object.entries(images).map((item, index) => {
+            let img = item[0];
+            let imgPath = `/partners/${img}`;
+            return (
+              <div
+                key={index}
+                className="flex shrink-0 h-[40px] w-[95.73px]  relative"
+              >
+                <Image
+                  src={imgPath}
+                  layout="fill"
+                  placeholder="blur"
+                  objectFit="contain"
+                  blurDataURL={imgPath}
+                  quality={100}
+                  alt={img}
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
     );
   };
@@ -205,7 +248,7 @@ const Home = () => {
 
   return (
     <div ref={ref}>
-      <Header />
+      {/* <Header /> */}
       <section className="flex flex-col items-center">
         <div className="text-center mb-[40px] flex flex-col items-center">
           <div
@@ -273,7 +316,7 @@ const Home = () => {
                 `,
                 4: `h-[50.07px] w-[53.51px] right-[58.49px] bottom-[24.8px]
                 lg:w-[106.79px] lg:h-[99.93px] lg:bottom-[236.24px] lg:right-[7.21px]
-                `,
+                `
               };
               return (
                 <div
@@ -347,7 +390,7 @@ const Home = () => {
       <Faq />
       <Join />
       <Available />
-      <Footer />
+      {/* <Footer /> */}
       {/* </LayoutsGroup> */}
     </div>
   );

@@ -1,16 +1,10 @@
 import Head from "next/head";
 import { useEffect } from "react";
+import Header from "../components/Header";
+import Footer from "../components/home/Footer";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
-  //  width: 422px;
-  // height: 831px;
-  // left: 1122px;
-  // top: -74px;
-
-  // border: 128px solid rgba(222, 53, 97, 0.4);
-  // filter: blur(241.5px);
-
   return (
     <div className="overflow-x-hidden relative">
       <Head>
@@ -31,7 +25,9 @@ function MyApp({ Component, pageProps }) {
 
       {/* Main app */}
       <main className="container relative z-[1] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px] ">
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </main>
     </div>
   );
