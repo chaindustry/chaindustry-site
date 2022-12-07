@@ -13,10 +13,13 @@ import {
   People,
   TrendUp
 } from "iconsax-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import Title from "../Title";
 
 const Services = () => {
+  let matchesLg = useMediaQuery("(min-width:1024px)");
+  console.log(matchesLg);
   let services_ = [
     {
       focus: "fade-up",
@@ -81,30 +84,35 @@ const Services = () => {
     }
   ];
   const [showAll, setShowAll] = useState(false);
-  const [services, setServices] = useState(services_.slice(0, 4));
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    if (!showAll) {
+      setServices(services_.slice(0, matchesLg ? 6 : 4));
+    }
+  }, [matchesLg]);
   return (
     <div className="mb-[92px]" id="services">
       <Title
         title={"Our Services"}
         text="Chaindustry Provides a wide range of quality services that are given here."
       />
-      <div className="gap-[16px]">
+      <div className="gap-[16px] sm:grid sm:grid-cols-2 sm:gap-[24px] lg:grid-cols-3 lg:gap-[22px]">
         {services.map((service, id) => {
           return (
             <div
               key={id}
-              className="bg-[#160E24] rounded-[32px] p-[32px] mb-[16px]"
+              className="bg-[#160E24] rounded-[32px] p-[32px] mb-[16px] sm:mb-0 xl:p-[42px]"
             >
-              <div className="text-secondary-50 mb-[32px] py-[5px] px-[8px]">
+              <div className="text-secondary-50 mb-[32px] py-[5px] px-[8px] md:mb-[22px]">
                 {React.createElement(service.icon, {
                   variant: "Bulk",
                   size: 54
                 })}
               </div>
-              <h2 className="text-[20px] font-sfMedium leading-[125%] tracking-[-0.05em] mb-[10.71px]">
+              <h2 className="text-[20px] font-sfMedium leading-[125%] tracking-[-0.05em] mb-[10.71px] lg:leading-[140%] lg:text-[22px]">
                 {service.title}
               </h2>
-              <p className="text-[14px] text-grey-30 font-sfLight leading-[150%] tracking-[-0.02em]">
+              <p className="text-[14px] text-grey-30 font-sfLight leading-[150%] tracking-[-0.02em] lg:text-[13.5px] leading-[155%]">
                 {service.text}
               </p>
             </div>
@@ -114,11 +122,13 @@ const Services = () => {
       <div className="flex justify-center mt-[3px] relative z-[3]">
         <div
           onClick={() => {
-            setServices(() => (showAll ? services_.slice(0, 4) : services_));
+            setServices(() =>
+              showAll ? services_.slice(0, matchesLg ? 6 : 4) : services_
+            );
             setShowAll(!showAll);
             console.log("Hl");
           }}
-          className="flex items-center text-secondary-40 font-sfSemibold gap-[10px] cursor-pointer select-none"
+          className="flex items-center text-secondary-40 font-sfSemibold gap-[10px] cursor-pointer select-none sm:mt-5"
         >
           <span>View {showAll ? "less" : "more"}</span>{" "}
           {showAll ? <ArrowUp2 /> : <ArrowDown2 />}

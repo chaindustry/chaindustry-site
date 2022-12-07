@@ -1,10 +1,12 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/home/Footer";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <div className="overflow-x-hidden relative">
       <Head>
@@ -24,7 +26,9 @@ function MyApp({ Component, pageProps }) {
       ></div>
 
       {/* Main app */}
-      <main className="container relative z-[3] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px] ">
+      <main
+        className={`container relative z-[3] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px]`}
+      >
         <Header />
         <Component {...pageProps} />
       </main>

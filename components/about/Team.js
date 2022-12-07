@@ -125,12 +125,12 @@ const Team = () => {
         title={"Our Team"}
         text="We give value and high quality digital services to our users and our partners"
       />
-      <div>
+      <div className="sm:grid sm:grid-cols-2 sm:gap-[24px] lg:grid-cols-3 lg:gap-[22px]">
         {team.map((member, id) => {
           let img = `/team/${member.dp}`;
           return (
-            <div key={id} className="mb-[24px]">
-              <div className="relative bg-primary-90 h-[342px] mb-[16px] overflow-hidden  rounded-[16px]">
+            <div key={id} className="mb-[24px] sm:mb-0">
+              <div className="relative bg-primary-90 h-[342px] mb-[16px] overflow-hidden rounded-[16px] ">
                 <Image
                   src={img}
                   layout="fill"

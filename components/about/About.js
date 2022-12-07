@@ -1,6 +1,7 @@
 import React from "react";
 import Available from "../home/Available";
 import Join from "../home/Join";
+import PageImage from "./PageImage";
 import Services from "./Services";
 import Team from "./Team";
 
@@ -24,6 +25,7 @@ const About = () => {
           partners.
         </span>
       </div>
+      <PageImage />
       <Services />
       <Team />
       <Join />
