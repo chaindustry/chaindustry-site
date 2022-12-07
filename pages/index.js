@@ -20,7 +20,7 @@ export default function Main() {
         />
         <meta
           property="og:image"
-          content="https://firebasestorage.googleapis.com/v0/b/cashio-1ccdd.appspot.com/o/og_chain-min.png?alt=media&token=2b896698-c1b8-4b1d-821c-8d296ef54161"
+          content="https://firebasestorage.googleapis.com/v0/b/cashio-1ccdd.appspot.com/o/og_chain-min%20(1).png?alt=media&token=aa672469-787f-41f3-84e1-c0956951e51e"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -33,7 +33,7 @@ export default function Main() {
         />
         <meta
           name="twitter:image"
-          content="https://firebasestorage.googleapis.com/v0/b/cashio-1ccdd.appspot.com/o/og_chain-min.png?alt=media&token=2b896698-c1b8-4b1d-821c-8d296ef54161"
+          content="https://firebasestorage.googleapis.com/v0/b/cashio-1ccdd.appspot.com/o/og_chain-min%20(1).png?alt=media&token=aa672469-787f-41f3-84e1-c0956951e51e"
         />
 
         <title>Chaindustry | Home</title>
