@@ -24,11 +24,11 @@ function MyApp({ Component, pageProps }) {
       ></div>
 
       {/* Main app */}
-      <main className="container relative z-[1] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px] ">
+      <main className="container relative z-[3] px-[20px] m-auto xl:w-[1200px] 2xl:w-[1300px] ">
         <Header />
         <Component {...pageProps} />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }

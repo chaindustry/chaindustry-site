@@ -18,7 +18,7 @@ const Carousel = ({ children, xsclass }) => {
     };
     const interval = setInterval(() => {
       updateIndex(active + 1);
-    }, 3000);
+    }, 8000);
     return () => {
       if (interval) clearInterval(interval);
     };

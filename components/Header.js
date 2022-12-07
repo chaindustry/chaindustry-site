@@ -1,7 +1,7 @@
 import { ArrowRight } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Router } from "next/router";
+import { Router, useRouter } from "next/router";
 import React, { memo, useEffect, useState } from "react";
 import { appName } from "../variables";
 import AppButton from "./button/AppButton";
@@ -10,7 +10,7 @@ import MobileNav from "./MobileNav";
 const Header = () => {
   let navs = [
     { label: "About Us", path: "/about" },
-    { label: "Our services", path: "/services" },
+    // { label: "Our services", path: "/services" },
     { label: "Blog", path: "https://www.blog.chaindustry.io" },
     { label: "Academy", path: "https://www.academy.chaindustry.io" }
   ];
@@ -18,17 +18,23 @@ const Header = () => {
   const toggleNav = (bool) => {
     return setShow(bool);
   };
+  const router = useRouter();
   //   Desktop Nav
   const LgNav = () => {
     return (
-      <nav className="hidden lg:block">
-        <ul className="flex gap-[54px]">
+      <nav className="hidden lg:block mt-[12px] transition ">
+        <ul className="flex gap-[32px] ">
           {/* To include schema */}
           {navs.map((nav, id) => {
+            let isActive = router.pathname === nav.path;
             return (
               <li key={id}>
                 <Link href={nav.path}>
-                  <a className="text-[18px] inline-flex items-center whitespace-nowrap font-sfLight leading-[36px] tracking-[-0.025em]">
+                  <a
+                    className={`${
+                      isActive ? "bg-white/20" : ""
+                    } rounded-[12px] text-[18px] px-[16px] py-[8px] inline-flex items-center whitespace-nowrap font-sfLight leading-[201.5%] tracking-[-0.025em]`}
+                  >
                     {nav.label}
                     {nav.label === "Blog" && (
                       <ArrowRight style={{ transform: "rotate(-45deg)" }} />
@@ -78,7 +84,7 @@ const Header = () => {
   }, []);
   return (
     <header
-      className="mb-[108px] py-7 flex justify-between items-center 
+      className="mb-[108px] py-7 flex justify-between items-center  relative z-[2]
     sm:py-7
     md:py-7
     lg:py-[54px] lg:mb-[90px]"

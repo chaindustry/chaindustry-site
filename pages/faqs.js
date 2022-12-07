@@ -1,8 +1,9 @@
 import Head from "next/head";
 import React from "react";
+import Faq from "../components/home/Faq";
 import { faqs } from "../variables";
 
-const Faq = () => {
+const FaqPage = () => {
   const addFaqJsonLd = () => {
     const generateEntities = () => {
       return faqs.map((faq) => {
@@ -44,9 +45,9 @@ const Faq = () => {
           key="faq-jsonld"
         />
       </Head>
-      <div>Faq page</div>
+      <Faq />
     </div>
   );
 };
 
-export default Faq;
+export default FaqPage;

@@ -3,8 +3,8 @@ import React, { memo } from "react";
 import AppButton from "./button/AppButton";
 import { appName } from "../variables";
 const MobileNav = ({ logo, navs, show, setShow }) => {
-  let showNav = `fixed opacity-100 translate-x-0 shownav z-[100]`;
-  let hideNav = `fixed z-[-1] opacity-0 hidenav translate-x-[100%]`;
+  let showNav = `fixed opacity-100 translate-x-0 shownav z-[1]`;
+  let hideNav = `fixed z-[-18] opacity-0 hidenav translate-x-[100%]`;
   return (
     <nav
       className={`${show ? showNav : hideNav} inset-0 bg-primary-100 

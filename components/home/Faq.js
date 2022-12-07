@@ -7,6 +7,7 @@ const Faq = () => {
 
   return (
     <motion.div
+      id="faqs"
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -50,7 +51,9 @@ const Faq = () => {
                       ? "mb-[16px] text-white lg:mb-[28px]"
                       : "text-grey-20"
                   } flex justify-between text-[16px] font-sfLight leading-[150%] tracking-[-0.02em] group-hover:text-white
+                  lg:text-[18px] lg:tracking-[-0.03em]
                   lg:text-[24px] lg:tracking-[-0.04em]
+
                   `}
                 >
                   {faq.title}

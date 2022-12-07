@@ -8,7 +8,7 @@ const Available = () => {
       apple: `h-[20.1px] w-[17.23px] 
       lg:w-[24px] lg:h-[28px]
 `,
-      google: `w-[18.66px] h-[20.1px]`,
+      google: `w-[18.66px] h-[20.1px]`
     };
     return (
       <div
@@ -56,7 +56,7 @@ const Available = () => {
       viewport={{ amount: "some", fallback: true }}
       className="bg-[#170337] px-[20px] pt-[40px] rounded-[20px] mb-[400px] max-w-[1184px] mx-auto
     md:flex md:justify-between md:mb-[148px]
-    lg:pt-[55px] lg:px-[60px] lg:rounded-[48px]
+    lg:pt-[55px] lg:px-[60px] lg:rounded-[48px]  lg:mb-[239px]
     xl:pt-[65px] xl:px-[121px] 
     "
     >
