@@ -41,22 +41,20 @@ const Team = () => {
       ]
     },
     {
-      dp: "igunnu.jpeg",
-      name: "Igunnu Emmanuel",
-      role: "CTO",
-      desc: "Blockchain || Web3 || NFT Degen. Backend Guru.",
+      dp: "paul.JPG",
+      name: "John Harnie Paul",
+      role: "IT Consultant",
+      desc: "Techpreneur || Fullstack || React native pro and Node Express js || CEO Orizon24 Solutions and Cashio",
       socials: [
-        { name: <SiTelegram />, url: "https://t.me/js_genin" },
+        { name: <SiTwitter />, url: "https://twitter.com/john_harnie" },
+        { name: <SiTelegram />, url: "https://t.me/lucifa_morningstar" },
         {
-          name: <SiDiscord />,
-          url: "https://discordapp.com/users/446123015156269068"
-        },
-        {
-          name: <SiTwitter />,
-          url: "https://twitter.com/daemon_rae"
+          name: <SiLinkedin />,
+          url: "https://www.linkedin.com/in/john-paul-213109227"
         }
       ]
     },
+
     {
       dp: "patrick.JPG",
       name: "Patrick Idungafa",
@@ -103,18 +101,20 @@ const Team = () => {
         { name: <SiTelegram />, url: "https://t.me/Utygirl" }
       ]
     },
-
     {
-      dp: "paul.JPG",
-      name: "John Harnie Paul",
-      role: "IT Consultant",
-      desc: "Techpreneur || Fullstack || React native pro and Node Express js || CEO Orizon24 Solutions and Cashio",
+      dp: "igunnu.jpeg",
+      name: "Igunnu Emmanuel",
+      role: "CTO",
+      desc: "Blockchain || Web3 || NFT Degen. Backend Guru.",
       socials: [
-        { name: <SiTwitter />, url: "https://twitter.com/john_harnie" },
-        { name: <SiTelegram />, url: "https://t.me/lucifa_morningstar" },
+        { name: <SiTelegram />, url: "https://t.me/js_genin" },
         {
-          name: <SiLinkedin />,
-          url: "https://www.linkedin.com/in/john-paul-213109227"
+          name: <SiDiscord />,
+          url: "https://discordapp.com/users/446123015156269068"
+        },
+        {
+          name: <SiTwitter />,
+          url: "https://twitter.com/daemon_rae"
         }
       ]
     }
