@@ -84,7 +84,7 @@ const Header = () => {
   }, []);
   return (
     <header
-      className="mb-[108px] py-7 flex justify-between items-center  relative z-[2]
+      className="mb-[108px]  py-7 flex justify-between items-center  relative z-[200]
     sm:py-7
     md:py-7
     lg:py-[54px] lg:mb-[90px]"

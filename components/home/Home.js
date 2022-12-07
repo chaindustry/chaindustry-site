@@ -21,6 +21,7 @@ import Link from "next/link";
 import { appName } from "../../variables";
 import Footer from "./Footer";
 import Reviews from "./Reviews";
+import globalDisabled from "../about/globalDisabled";
 
 const Home = () => {
   const [constants, setConstants] = useState({
@@ -272,21 +273,21 @@ const Home = () => {
         lg:mb-[40px]
         "
         >
-          <Link href={`${appName}/signup`}>
-            <a>
+          <Link href={"/" || `${appName}/signup`}>
+            <a disabled={globalDisabled}>
               <AppButton size="lg" label="Get Started" variant="secondary" />
             </a>
           </Link>
           <Link
             href={{
-              pathname: `${appName}/login`,
+              pathname: "/" || `${appName}/login`,
               query: {
                 url_source: "landing_page",
                 referrer: "chaindustry"
               }
             }}
           >
-            <a>
+            <a disabled={globalDisabled}>
               <AppButton size="lg" label="Log In" variant="ghost" />
             </a>
           </Link>

@@ -15,6 +15,8 @@ const PageImage = () => {
         layout="fill"
         objectFit="cover"
         priority
+        placeholder="blur"
+        blurDataURL="/coins_img.png"
         quality={100}
         alt="Cover"
       />

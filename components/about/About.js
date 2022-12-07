@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import Available from "../home/Available";
 import Join from "../home/Join";
@@ -8,6 +9,15 @@ import Team from "./Team";
 const About = () => {
   return (
     <div>
+      <Head>
+        <title>About Chaindustry</title>
+        <meta
+          name="description"
+          content="We give value and high quality digital services to our users and our
+          partners."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="text-center mb-[40px] flex flex-col items-center">
         <div
           className="font-sfBold leading-[50.33px] text-[40px] tracking-[-0.035em] max-w-[329px] mb-4

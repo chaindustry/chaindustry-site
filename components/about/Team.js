@@ -130,8 +130,14 @@ const Team = () => {
           let img = `/team/${member.dp}`;
           return (
             <div key={id} className="mb-[24px] sm:mb-0">
-              <div className="relative bg-primary-90 h-[342px] mb-[16px] overflow-hidden rounded-[16px] ">
+              <div
+                className="relative bg-primary-90 h-[342px] mb-[16px] overflow-hidden rounded-[16px]
+                md:h-[370px] 
+                lgz:h-[390px]
+              xl:h-[443px]"
+              >
                 <Image
+                  className="grayscale"
                   src={img}
                   layout="fill"
                   objectFit="cover"

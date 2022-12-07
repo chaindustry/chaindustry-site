@@ -2,8 +2,9 @@ import Link from "next/link";
 import React, { memo } from "react";
 import AppButton from "./button/AppButton";
 import { appName } from "../variables";
+import { AnimatePresence, motion } from "framer-motion";
 const MobileNav = ({ logo, navs, show, setShow }) => {
-  let showNav = `fixed opacity-100 translate-x-0 shownav z-[1]`;
+  let showNav = `fixed opacity-100 translate-x-0 shownav z-[100]`;
   let hideNav = `fixed z-[-18] opacity-0 hidenav translate-x-[100%]`;
   return (
     <nav
@@ -11,24 +12,30 @@ const MobileNav = ({ logo, navs, show, setShow }) => {
         lg:hidden`}
     >
       {/* Background blur filter */}
-      <div
-        className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]
+      <AnimatePresence>
+        {show && (
+          <motion.div exit={{ transition: { duration: 1 } }}>
+            <div
+              className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]
       lg:top-[249px] lg:left-0 lg:h-[831px] lg:w-[422px]
       "
-      ></div>
-      {/* Bg blur filter */}
-      <div
-        className="absolute w-[422px] h-[831px] top-[-74px] right-[-127px] blur-[241px] border-[128px] saf-blur border-secondary-50/40
+            ></div>
+            {/* Bg blur filter */}
+            <div
+              className="absolute w-[422px] h-[831px] top-[-74px] right-[-127px] blur-[241px] border-[128px] saf-blur border-secondary-50/40
       lg:top-[-74px] lg:right-[-104px]
       "
-      ></div>
+            ></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="container mx-auto py-7 px-[20px] relative z-1">
         <header className="flex justify-between mb-[38.91px]">
           {logo}
           {/* <div onClick={() => setShow(false)}>Bars</div> */}
         </header>
         <div className="flex justify-center gap-4 mb-[36px]">
-          <Link href={`${appName}/signup`}>
+          <Link href={"/" || `${appName}/signup`}>
             <a>
               <AppButton
                 label="Get Started"
@@ -39,7 +46,7 @@ const MobileNav = ({ logo, navs, show, setShow }) => {
           </Link>
           <Link
             href={{
-              pathname: `${appName}/login`,
+              pathname: "/" || `${appName}/login`,
               query: {
                 url_source: "landing_page"
               }
