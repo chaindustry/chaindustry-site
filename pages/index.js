@@ -11,7 +11,7 @@ export default function Main() {
           content="Chaindustry is a DoToEarn network offering value and digital services to it's users and partners."
         />
 
-        <meta property="og:url" content="https://chaindustry.io" />
+        <meta property="og:url" content="https://www.chaindustry.io" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Chaindustry" />
         <meta
@@ -25,7 +25,7 @@ export default function Main() {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="chaindustry.io" />
-        <meta property="twitter:url" content="https://chaindustry.io" />
+        <meta property="twitter:url" content="https://www.chaindustry.io" />
         <meta name="twitter:title" content="Chaindustry" />
         <meta
           name="twitter:description"
