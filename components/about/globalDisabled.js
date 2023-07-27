@@ -1,2 +1,2 @@
-let globalDisabled = true;
+let globalDisabled = false;
 export default globalDisabled;

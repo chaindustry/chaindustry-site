@@ -273,14 +273,14 @@ const Home = () => {
         lg:mb-[40px]
         "
         >
-          <Link href={"/" || `${appName}/signup`}>
+          <Link href={`${appName}/signup`}>
             <a disabled={globalDisabled}>
               <AppButton size="lg" label="Get Started" variant="secondary" />
             </a>
           </Link>
           <Link
             href={{
-              pathname: "/" || `${appName}/login`,
+              pathname: `${appName}/login`,
               query: {
                 url_source: "landing_page",
                 referrer: "chaindustry"
