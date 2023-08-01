@@ -1,14 +1,15 @@
 export const appName = "https://chainapp.vercel.app";
 const getTasks = [
   "EngageToEarn",
-  "PromoteToearn",
-  "ChatToEarn",
+  // "PromoteToearn",
+  // "ChatToEarn",
+  "PredictToEarn",
   "ReferToEarn",
-  "VoteToEarn",
+  // "VoteToEarn",
   "LearnToEarn",
-  "StreamToEarn",
-  "StakeToEarn",
-  "PostToEarn",
+  // "StreamToEarn",
+  // "StakeToEarn",
+  // "PostToEarn",
   "SleepToEarn"
 ].map((c) => ` <b>${c}</b>`);
 console.log(getTasks);

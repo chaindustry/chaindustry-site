@@ -391,7 +391,7 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-      <ScrollContent />
+      {/* <ScrollContent /> */}
       {/* <LayoutGroup> */}
       <OnBoard />
       <Upgrade />

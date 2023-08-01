@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <div>
       <Head>
-        <title>Chaindustry | Home</title>
+        <title>Chaindustry</title>
         <meta
           name="description"
           content="Chaindustry is a digital servicing company giving value and digital services to its users and partners."

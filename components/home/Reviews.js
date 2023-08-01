@@ -8,30 +8,31 @@ const Reviews = () => {
       name: "Nancy Ogbonna",
       role: "UX writer @ Google",
       review:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor."
     },
     {
       img: null,
       name: "Lekan Saheed",
       role: "Developer",
       review:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor."
     },
     {
       img: null,
       name: "John Paul",
       role: "Developer",
       review:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor."
     },
     {
       img: null,
       name: "Victor Adebisi",
       role: "Developer",
       review:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor.",
-    },
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum nisi mollis arcu at senectus scelerisque convallis. Id vulputate auctor sed in sem et egestas ipsum. Turpis sagittis, libero enim sed odio facilisis. Id ipsum nisi consequat ullamcorper pretium, leo. Aliquam ultricies libero, velit auctor urna urna quis. Vel commodo, diam nibh ut ultricies. Ut sed consectetur quisque tortor."
+    }
   ];
+  return "";
   return (
     <section
       className="mb-[128px]  max-w-[1184px] mx-auto

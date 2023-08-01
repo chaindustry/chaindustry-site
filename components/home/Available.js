@@ -36,7 +36,7 @@ const Available = () => {
           lg:text-[14px] lg:leading-[17px] lg:mb-[3px]
           "
           >
-            Available on
+            Coming on
           </span>
 
           <span
@@ -71,7 +71,7 @@ const Available = () => {
         lg:mt-[45px] lg:text-[48px] lg:leading-[125.84%] lg:tracking-[-0.06em] lg:max-w-[404px] lg:mb-[55px]
         "
         >
-          Available on mobile devices
+          Coming on mobile devices
         </h3>
         <div
           className="flex gap-[17.23px]

@@ -13,8 +13,7 @@ const About = () => {
         <title>About Chaindustry</title>
         <meta
           name="description"
-          content="We give value and high quality digital services to our users and our
-          partners."
+          content="Chaindustry is a Digital Servicing platform for building and boosting growth, traction, engagements and adoption, as users complete simple tasks for chaindustry partners through the chaindustry DoToEarn network."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -27,12 +26,14 @@ const About = () => {
           Chaindustry
         </div>
         <span
-          className="max-w-[272px] text-base tracking-[-0.03em] text-[color:var(--primary-0)] 
-          md:max-w-[500px] md:text-[20px] md:leading-[30px] 
-          lg:text-[24px]  lg:max-w-[587px] lg:leading-[36px]"
+          className=" text-base tracking-[-0.03em] text-[color:var(--primary-0)] 
+          md:max-w-[600px] md:text-[20px] md:leading-[30px] 
+          lg:text-[24px]  lg:max-w-[687px] lg:leading-[36px]"
         >
-          We give value and high quality digital services to our users and our
-          partners.
+          Chaindustry is a Digital Servicing platform for building and boosting
+          growth, traction, engagements and adoption, as users complete simple
+          tasks for chaindustry partners through the chaindustry DoToEarn
+          network
         </span>
       </div>
       <PageImage />
