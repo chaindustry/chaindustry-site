@@ -84,12 +84,12 @@ const Header = () => {
 
     return () => Router.events.off("routeChangeStart", closeNav);
   }, []);
-  const duration = 0.7;
+  const duration = 0.9;
   return (
     <motion.header
       initial={{ height: "100vh" }}
       animate={{ height: "auto" }}
-      transition={{ duration: duration }}
+      transition={{ duration: duration, delay: 0.3 }}
       className="mb-[108px]  py-7 flex justify-between items-center  relative z-[200]
     sm:py-7
     md:py-7
@@ -102,17 +102,23 @@ const Header = () => {
           display: "flex",
           scale: 2,
           width: "100%",
-          y: "100%"
+          y: "100%",
+          opacity: 0
         }}
         animate={{
           scale: 1,
           flex: "unset",
           width: "auto",
           placeContent: "start",
-          y: 0
+          y: 0,
+          opacity: 1
         }}
         transition={{
           duration,
+          delay: 0.3,
+          opacity: {
+            duration: 0.5
+          },
           flex: {
             delay: duration + 1.3
           },
