@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 // import { ArrowRight } from "ic";
 import { ArrowRight2 } from "iconsax-react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 const OnBoard = () => {
   let details = [
     {
@@ -11,21 +13,21 @@ const OnBoard = () => {
       img: "man-phone",
       title: "Simple Task & Earn",
       desc: "We have 8 varieties of task you can earn from. You can earn CSPD points while learning, Streaming, Sleeping, Predicting, Freelancing, Promoting, Engaging or referring.",
-      action_text: "Get Started, it’s free",
+      action_text: "Get Started, it’s free"
     },
     {
       id: 2,
       img: "nft",
       title: "Exchange CDSP for fiat, crypto or NFT",
       desc: "CDSP are not just mere points, they can be exchanged for crypto.",
-      action_text: "Get Started, it’s free",
+      action_text: "Get Started, it’s free"
     },
     {
       id: 3,
       img: "medal",
       title: "Get on top of the leaderboard",
       desc: "Earn special rewards by getting a place on the leaderboard.",
-      action_text: "Start earning",
+      action_text: "Start earning"
     },
     {
       id: 4,
@@ -33,11 +35,63 @@ const OnBoard = () => {
       title: "Perform a task,",
       title2: "Earn twice",
       desc: "Upgrade to Premium to enjoy 2X rewards.",
-      action_text: null,
-    },
+      action_text: null
+    }
   ];
+  // gsap.registerPlugin(ScrollTrigger);
+  const ref = useRef(null);
+  // useEffect(() => {
+  //   let ctx = gsap.context(() => {
+  //     const timeline = gsap.timeline();
+
+  //     ScrollTrigger.create({
+  //       trigger: ".stay-1",
+  //       pin: true,
+
+  //       start: "bottom center",
+  //       end: "+=400",
+  //       // endTrigger: ".stay-2",
+  //       scrub: true, // I like the 1 sec delay, set to true for exact anime on scroll
+  //       markers: true
+  //     });
+  //     ScrollTrigger.create({
+  //       trigger: ".stay-2",
+  //       pin: true,
+
+  //       start: "bottom center",
+  //       end: "+=400",
+  //       scrub: true, // I like the 1 sec delay, set to true for exact anime on scroll
+  //       markers: true,
+  //       pinSpacing: "+=1000"
+  //     });
+  //     ScrollTrigger.create({
+  //       trigger: ".stay-3",
+  //       pin: true,
+
+  //       start: "bottom center",
+  //       end: "+=400",
+  //       scrub: true, // I like the 1 sec delay, set to true for exact anime on scroll
+  //       markers: true,
+  //       pinSpacing: "500px"
+  //     });
+  //     ScrollTrigger.create({
+  //       trigger: ".stay-4",
+  //       pin: true,
+
+  //       start: "bottom center",
+  //       end: "+=400",
+  //       scrub: true, // I like the 1 sec delay, set to true for exact anime on scroll
+  //       markers: true,
+  //       pinSpacing: "500px"
+  //     });
+  //   }, ref);
+
+  //   return () => ctx.revert();
+  // }, []);
   return (
     <section
+      ref={ref}
+      id="animate"
       className="md:m-auto md:max-w-[700px]
      lg:max-w-[1008px]
      xl:max-w-[1200px]"
@@ -49,14 +103,14 @@ const OnBoard = () => {
           1: "h-[556px] w-[449px] right-[-41px] mb-[41px] md:right-[0px] md:h-[700px] md:w-[600px] z-[2]",
           2: "h-[280px] w-[222.64px] m-auto mb-[55px] md:m-[unset] md:w-[180px] md:h-[240px]",
           3: "h-[291px] w-[179px] m-auto mb-[33px]",
-          4: "h-[197px] w-[249px] m-auto mb-[27px]",
+          4: "h-[197px] w-[249px] m-auto mb-[27px]"
         };
 
         return (
-          <motion.article
-            initial={{ opacity: 0, y: 100 }}
-            transition={{ delay: 0, duration: 0.5, type: "tween" }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <article
+            // initial={{ opacity: 0, y: 100 }}
+            // transition={{ delay: 0, duration: 0.5, type: "tween" }}
+            // whileInView={{ opacity: 1, y: 0 }}
             key={id}
             className={`mb-[110px] ${index === 3 && "mb-[128px]"} relative 
             md:flex md:items-center md:px-[40px]
@@ -87,7 +141,7 @@ const OnBoard = () => {
                 />
               </div>
             </div>
-            <div className="md:flex-1">
+            <div className={`md:flex-1 stay-${id + 1}`}>
               <div
                 className="max-w-[283px] shrink-0
                 md:max-w-[323px]
@@ -124,7 +178,7 @@ const OnBoard = () => {
                 )}
               </div>
             </div>
-          </motion.article>
+          </article>
         );
       })}
     </section>

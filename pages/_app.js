@@ -4,10 +4,14 @@ import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/home/Footer";
 import "../styles/globals.scss";
+import { ReactLenis } from "@studio-freight/react-lenis";
+import scroll from "../components/animations/scroll";
 
 function MyApp({ Component, pageProps }) {
+  // scroll();
   const router = useRouter();
   return (
+    // <ReactLenis root >
     <div className="overflow-x-hidden relative">
       <Head>
         <meta name="theme-color" content="#0A0118" />
@@ -34,6 +38,7 @@ function MyApp({ Component, pageProps }) {
       </main>
       <Footer />
     </div>
+    // </ReactLenis>
   );
 }
 

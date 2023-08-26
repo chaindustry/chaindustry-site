@@ -6,7 +6,33 @@ import React, { memo, useEffect, useState } from "react";
 import { appName } from "../variables";
 import AppButton from "./button/AppButton";
 import MobileNav from "./MobileNav";
+import { motion } from "framer-motion";
 
+const Logo = () => {
+  return (
+    <Link href="/">
+      <a className="inline-block">
+        <div
+          className="relative w-[118px] h-[24.09px]
+        md:w-[140px] md:h-[30px]
+        lg:w-[185px] lg:h-[39px]
+        "
+        >
+          <Image
+            layout="fill"
+            src={"/logo.png"}
+            objectFit="contain"
+            priority
+            quality={100}
+            alt="Logo"
+            // placeholder="blur"
+            // blurDataURL="/logo.png"
+          />
+        </div>
+      </a>
+    </Link>
+  );
+};
 const Header = () => {
   let navs = [
     { label: "About Us", path: "/about" },
@@ -49,31 +75,7 @@ const Header = () => {
     );
   };
   let app_link = "https://chainapp.vercel.app";
-  const Logo = () => {
-    return (
-      <Link href="/">
-        <a>
-          <div
-            className="relative w-[118px] h-[24.09px]
-        md:w-[140px] md:h-[30px]
-        lg:w-[185px] lg:h-[39px]
-        "
-          >
-            <Image
-              layout="fill"
-              src={"/logo.png"}
-              objectFit="contain"
-              priority
-              quality={100}
-              alt="Logo"
-              placeholder="blur"
-              blurDataURL="/logo.png"
-            />
-          </div>
-        </a>
-      </Link>
-    );
-  };
+
   const closeNav = () => {
     setShow(false);
   };
@@ -82,22 +84,52 @@ const Header = () => {
 
     return () => Router.events.off("routeChangeStart", closeNav);
   }, []);
+  const duration = 0.7;
   return (
-    <header
+    <motion.header
+      initial={{ height: "100vh" }}
+      animate={{ height: "auto" }}
+      transition={{ duration: duration }}
       className="mb-[108px]  py-7 flex justify-between items-center  relative z-[200]
     sm:py-7
     md:py-7
     lg:py-[54px] lg:mb-[90px]"
     >
-      <div className="w-full max-w-[249px]">
+      <motion.div
+        initial={{
+          flex: 1,
+          placeContent: "center",
+          display: "flex",
+          scale: 2,
+          width: "100%",
+          y: "100%"
+        }}
+        animate={{
+          scale: 1,
+          flex: "unset",
+          width: "auto",
+          placeContent: "start",
+          y: 0
+        }}
+        transition={{
+          duration,
+          flex: {
+            delay: duration + 1.3
+          },
+          placeContent: {
+            delay: duration + 1.8
+          }
+        }}
+        className=""
+      >
         {" "}
         <Logo />
-      </div>
+      </motion.div>
       {/* Nav */}
       <LgNav />
 
       {/* Get started */}
-      <div className="hidden gap-[15px] lg:flex">
+      <motion.div className="hidden gap-[15px] lg:flex">
         <Link
           href={{
             pathname: `${appName}/login`,
@@ -115,20 +147,23 @@ const Header = () => {
             <AppButton size="lg" label="Get Started" variant="secondary" />
           </a>
         </Link>
-      </div>
+      </motion.div>
 
       {/* MObile hqmburger toggle */}
-      <div
-        className={`relative z-[106] cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:hidden ${
+      <motion.div
+        initial={{ display: "none" }}
+        animate={{ display: "flex" }}
+        transition={{ delay: duration + 2 }}
+        className={`relative z-[106] cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:!hidden ${
           show ? "animate-bars" : "reshape-bars"
         }`}
         onClick={() => toggleNav(show ? false : true)}
       >
         <div className="bg-[#fff] w-[26px] h-[1px] bar"></div>
         <div className="bg-[#fff] w-[21px] h-[1px] bar"></div>
-      </div>
+      </motion.div>
       <MobileNav logo={<Logo />} navs={navs} show={show} setShow={toggleNav} />
-    </header>
+    </motion.header>
   );
 };
 
