@@ -2,11 +2,12 @@ import { ArrowRight } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { appName } from "../variables";
 import AppButton from "./button/AppButton";
 import MobileNav from "./MobileNav";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
 
 const Logo = () => {
   return (
@@ -84,92 +85,182 @@ const Header = () => {
 
     return () => Router.events.off("routeChangeStart", closeNav);
   }, []);
-  const duration = 0.9;
+  const ref = useRef(null);
+
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap.timeline();
+  //     // gsap.set("#logo", {
+  //     //   opacity: 1,
+  //     //   position: "absolute"
+  //     // });
+  //     gsap.set("#menu", { display: "none" });
+  //     gsap.set("#header", { height: "100vh" });
+  //     const headerTween = gsap.to("#header", {
+  //       keyframes: {
+  //         "0%": {
+  //           height: "100vh"
+  //         },
+  //         "20%": {
+  //           height: "100vh"
+  //         },
+  //         "40%": {
+  //           height: "100vh"
+  //         },
+  //         "60%": {
+  //           height: "100vh"
+  //         },
+  //         "80%": {
+  //           height: "100vh"
+  //         },
+  //         "100%": {
+  //           height: "auto"
+  //         }
+  //       },
+  //       duration: 4,
+  //       paused: true
+  //     });
+  //     const menuTween = gsap.to("#menu", {
+  //       keyframes: {
+  //         opacity: [0, 0, 1],
+  //         easeEach: "power2.inOut"
+  //       },
+
+  //       duration: 5,
+  //       paused: true
+  //     });
+  //     const center = {
+  //       xPercent: -50,
+  //       yPercent: -50,
+  //       // scale: 2.5,
+  //       top: "50%",
+  //       left: "50%",
+  //       position: "absolute"
+  //     };
+  //     let eachTween = gsap.to("#logo", {
+  //       keyframes: {
+  //         // "0%": {
+  //         //   // y: 100,
+
+  //         //   opacity: 0
+  //         //   scale: 2
+  //         // },
+  //         // "20%": {
+  //         //   // y: 100,
+  //         //   // scale: 2.5,
+  //         //   ...center,
+  //         //   opacity: 0
+  //         // },
+  //         // "40%": {
+  //         //   // y: 0,
+  //         //   // scale: 2.5,
+  //         //   ...center,
+  //         //   opacity: 1
+  //         //   // x: "100%"
+  //         // },
+  //         // "60%": {
+  //         //   ...center
+  //         //   // scale: 2.5
+  //         //   // x: "100%"
+  //         // },
+  //         // "75%": { scale: 1, transformOrigin: "top top", ...center },
+  //         // // "90%": { x: "100%" },
+  //         // "100%": {
+  //         //   scale: 1,
+  //         //   xPercent: 0,
+  //         //   yPercent: 0,
+  //         //   left: 0,
+  //         //   top: 0,
+  //         //   position: "relative"
+  //         // },
+  //         position: [
+  //           "relative"
+  //           // "relative",
+  //           // "relative",
+  //           // "relative",
+  //           // "relative",
+  //           // "static"
+  //         ],
+  //         left: ["50%", "50%", "50%", "50%", "50%", "0"],
+  //         top: ["50%", "50%", "50%", "50%", "50%", "0"],
+  //         yPercent: [-50, -50, -50, -50, 0],
+  //         scale: [2, 2, 2, 1, 1],
+  //         opacity: [0, 1],
+  //         xPercent: [-50, -50, -50, -50, 0],
+  //         easeEach: "power4.inOut" // <- customise the ease between each keyframe
+  //       },
+  //       duration: 5,
+  //       paused: true
+  //     });
+  //     headerTween.play();
+  //     eachTween.play();
+  //     menuTween.play();
+  //   }, ref);
+  //   return () => ctx.revert();
+  // }, [ref]);
+  const duration = 5;
   return (
-    <motion.header
-      initial={{ height: "100vh" }}
-      animate={{ height: "auto" }}
-      transition={{ duration: duration, delay: 0.3 }}
-      className="mb-[108px]  py-7 flex justify-between items-center  relative z-[200]
+    <div ref={ref}>
+      <motion.header
+        id="header"
+        // initial={{ height: "100vh" }}
+        // animate={{ height: "auto" }}
+        // transition={{ duration: duration, delay: 2 }}
+        className="mb-[108px]  py-7 flex justify-between items-center  relative z-[200]
     sm:py-7
     md:py-7
     lg:py-[54px] lg:mb-[90px]"
-    >
-      <motion.div
-        initial={{
-          flex: 1,
-          placeContent: "center",
-          display: "flex",
-          scale: 2,
-          width: "100%",
-          y: "100%",
-          opacity: 0
-        }}
-        animate={{
-          scale: 1,
-          flex: "unset",
-          width: "auto",
-          placeContent: "start",
-          y: 0,
-          opacity: 1
-        }}
-        transition={{
-          duration,
-          delay: 0.3,
-          opacity: {
-            duration: 0.5
-          },
-          flex: {
-            delay: duration + 1.3
-          },
-          placeContent: {
-            delay: duration + 1.8
-          }
-        }}
-        className=""
       >
-        {" "}
-        <Logo />
-      </motion.div>
-      {/* Nav */}
-      <LgNav />
+        <motion.div id="logo" className="">
+          {" "}
+          <Logo />
+        </motion.div>
+        {/* Nav */}
+        <LgNav />
 
-      {/* Get started */}
-      <motion.div className="hidden gap-[15px] lg:flex">
-        <Link
-          href={{
-            pathname: `${appName}/login`,
-            query: {
-              url_source: "landing_page"
-            }
-          }}
+        {/* Get started */}
+        <motion.div className="hidden gap-[15px] lg:flex">
+          <Link
+            href={{
+              pathname: `${appName}/login`,
+              query: {
+                url_source: "landing_page"
+              }
+            }}
+          >
+            <a>
+              <AppButton size="lg" label="Log In" variant="ghost" />
+            </a>
+          </Link>
+          <Link href={`${appName}/signup`}>
+            <a>
+              <AppButton size="lg" label="Get Started" variant="secondary" />
+            </a>
+          </Link>
+        </motion.div>
+
+        {/* MObile hqmburger toggle */}
+        <motion.div
+          id="menu"
+          // initial={{ display: "none" }}
+          // animate={{ display: "flex" }}
+          transition={{ delay: duration + 2 }}
+          className={`relative z-[106] cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:!hidden ${
+            show ? "animate-bars" : "reshape-bars"
+          }`}
+          onClick={() => toggleNav(show ? false : true)}
         >
-          <a>
-            <AppButton size="lg" label="Log In" variant="ghost" />
-          </a>
-        </Link>
-        <Link href={`${appName}/signup`}>
-          <a>
-            <AppButton size="lg" label="Get Started" variant="secondary" />
-          </a>
-        </Link>
-      </motion.div>
-
-      {/* MObile hqmburger toggle */}
-      <motion.div
-        initial={{ display: "none" }}
-        animate={{ display: "flex" }}
-        transition={{ delay: duration + 2 }}
-        className={`relative z-[106] cursor-pointer justify-center items-end flex flex-col gap-[10px] lg:!hidden ${
-          show ? "animate-bars" : "reshape-bars"
-        }`}
-        onClick={() => toggleNav(show ? false : true)}
-      >
-        <div className="bg-[#fff] w-[26px] h-[1px] bar"></div>
-        <div className="bg-[#fff] w-[21px] h-[1px] bar"></div>
-      </motion.div>
-      <MobileNav logo={<Logo />} navs={navs} show={show} setShow={toggleNav} />
-    </motion.header>
+          <div className="bg-[#fff] w-[26px] h-[1px] bar"></div>
+          <div className="bg-[#fff] w-[21px] h-[1px] bar"></div>
+        </motion.div>
+        <MobileNav
+          logo={<Logo />}
+          navs={navs}
+          show={show}
+          setShow={toggleNav}
+        />
+      </motion.header>
+    </div>
   );
 };
 

@@ -22,6 +22,18 @@ const Services = () => {
   console.log(matchesLg);
   let services_ = [
     {
+      focus: "zoom-out",
+      title: "Growth hacking and Digital marketing",
+      text: "We help our partners grow their communities and users base with tasks that can attract and retain new people.",
+      icon: ChartCircle
+    },
+    {
+      focus: "fade-left",
+      title: "Content Marketing",
+      text: "We create copy and visual contents (graphics and videos) for our network's partners that need them..",
+      icon: MonitorMobbile
+    },
+    {
       focus: "fade-up",
       title: "Hosting AMA Sessions",
       text: "We conduct high quality and organic 'Ask Me Anything' sessions for companies within and outside our network.",
@@ -52,18 +64,6 @@ const Services = () => {
       icon: TrendUp
     },
 
-    {
-      focus: "zoom-out",
-      title: "Growth hacking and Digital marketing",
-      text: "We engage the use of cost-effective digital marketing strategies to achieve users' growth, retain active users, and gain project awareness.",
-      icon: ChartCircle
-    },
-    {
-      focus: "fade-left",
-      title: "Content Development",
-      text: "We create HD contents like graphics, videos, motion graphics, 3D animations, copywriting and content writing for projects who need it.",
-      icon: MonitorMobbile
-    },
     {
       focus: "fade-left",
       title: "VC/Angel investor introduce and BD",

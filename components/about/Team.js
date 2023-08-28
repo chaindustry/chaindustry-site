@@ -16,30 +16,30 @@ const Team = () => {
         { name: <SiTwitter />, url: "https://twitter.com/withempato" }
       ]
     },
-    {
-      dp: "ubong.JPG",
-      name: "UbongAbasi Ukpong",
-      role: "COO",
-      socials: [
-        { name: <SiTwitter />, url: "https://twitter.com/ubnyah" },
-        { name: <SiTelegram />, url: "https://t.me/Ubukpong" },
-        { name: <SiDiscord />, url: "https://discordapp.com/users/ubie#4094" }
-      ]
-    },
-    {
-      dp: "idong.JPG",
-      name: "Idongesit Ita",
-      role: "CFO",
-      desc: `HR/Finance Manager at Chaindustry Digital Agency, A Community Manager, Crypto Enthusiast, Freelance UX Designer. I am smart, Tech Saavy with interest in Web 3.0 and a very fast and dedicated learner`,
-      socials: [
-        {
-          name: <SiLinkedin />,
-          url: "https://www.linkedin.com/in/idongesit-ita-acipm-575647208"
-        },
-        { name: <SiTwitter />, url: "https://twitter.com/Lordiesheila" },
-        { name: <SiTelegram />, url: "https://t.me/SheilaElite" }
-      ]
-    },
+    // {
+    //   dp: "ubong.JPG",
+    //   name: "UbongAbasi Ukpong",
+    //   role: "COO",
+    //   socials: [
+    //     { name: <SiTwitter />, url: "https://twitter.com/ubnyah" },
+    //     { name: <SiTelegram />, url: "https://t.me/Ubukpong" },
+    //     { name: <SiDiscord />, url: "https://discordapp.com/users/ubie#4094" }
+    //   ]
+    // },
+    // {
+    //   dp: "idong.JPG",
+    //   name: "Idongesit Ita",
+    //   role: "CFO",
+    //   desc: `HR/Finance Manager at Chaindustry Digital Agency, A Community Manager, Crypto Enthusiast, Freelance UX Designer. I am smart, Tech Saavy with interest in Web 3.0 and a very fast and dedicated learner`,
+    //   socials: [
+    //     {
+    //       name: <SiLinkedin />,
+    //       url: "https://www.linkedin.com/in/idongesit-ita-acipm-575647208"
+    //     },
+    //     { name: <SiTwitter />, url: "https://twitter.com/Lordiesheila" },
+    //     { name: <SiTelegram />, url: "https://t.me/SheilaElite" }
+    //   ]
+    // },
     {
       dp: "paul.JPG",
       name: "John Harnie Paul",
@@ -52,53 +52,6 @@ const Team = () => {
           name: <SiLinkedin />,
           url: "https://www.linkedin.com/in/john-paul-213109227"
         }
-      ]
-    },
-
-    {
-      dp: "patrick.JPG",
-      name: "Patrick Idungafa",
-      role: "CMO",
-      desc: "Blockchain Community Manager and Digital Marketer. I eat NFTs for breakfast.",
-      socials: [
-        {
-          name: <SiDiscord />,
-          url: "https://discordapp.com/users/maguar#8196"
-        },
-
-        { name: <SiTwitter />, url: "https://twitter.com/IdungafaPatrick" },
-        {
-          name: <SiLinkedin />,
-          url: "https://www.linkedin.com/in/patrick-idungafa-1bb2681a5"
-        }
-      ]
-    },
-    {
-      dp: "annie.jpeg",
-      name: "Annie Ukana",
-      role: "HOC",
-      desc: "Sui generis",
-      socials: [
-        {
-          name: <SiLinkedin />,
-          url: "https://www.linkedin.com/in/annie-ukay-70121121a"
-        },
-        { name: <SiTwitter />, url: "https://twitter.com/Deenigma4" },
-        { name: "", url: "" }
-      ]
-    },
-    {
-      dp: "utty.jpeg",
-      name: "Utomobong Usoro",
-      role: "Moderator Instructor",
-      desc: `Crypto Enthusiast || Community Manger/Moderator || Crypto Writer || Freelancer.😎🥰`,
-      socials: [
-        {
-          name: <SiLinkedin />,
-          url: "https://www.linkedin.com/in/utomobong-usoro-a3147a143"
-        },
-        { name: <SiTwitter />, url: "https://twitter.com/Utybby?s=08" },
-        { name: <SiTelegram />, url: "https://t.me/Utygirl" }
       ]
     },
     {
@@ -117,7 +70,68 @@ const Team = () => {
           url: "https://twitter.com/daemon_rae"
         }
       ]
+    },
+
+    // {
+    //   dp: "patrick.JPG",
+    //   name: "Patrick Idungafa",
+    //   role: "CMO",
+    //   desc: "Blockchain Community Manager and Digital Marketer. I eat NFTs for breakfast.",
+    //   socials: [
+    //     {
+    //       name: <SiDiscord />,
+    //       url: "https://discordapp.com/users/maguar#8196"
+    //     },
+
+    //     { name: <SiTwitter />, url: "https://twitter.com/IdungafaPatrick" },
+    //     {
+    //       name: <SiLinkedin />,
+    //       url: "https://www.linkedin.com/in/patrick-idungafa-1bb2681a5"
+    //     }
+    //   ]
+    // },
+    {
+      dp: "annie.jpeg",
+      name: "Annie Ukay",
+      role: "Operations Manager",
+      desc: "Sui generis",
+      socials: [
+        {
+          name: <SiLinkedin />,
+          url: "https://www.linkedin.com/in/annie-ukay-70121121a"
+        },
+        { name: <SiTwitter />, url: "https://twitter.com/Deenigma4" },
+        { name: "", url: "" }
+      ]
+    },
+    {
+      dp: "",
+      name: "Emmanuel Afia",
+      role: "Marketing Manager",
+      desc: "Sui generis",
+      socials: [
+        {
+          name: <SiLinkedin />,
+          url: "https://www.linkedin.com/in/annie-ukay-70121121a"
+        },
+        { name: <SiTwitter />, url: "https://twitter.com/Deenigma4" },
+        { name: "", url: "" }
+      ]
     }
+    // {
+    //   dp: "utty.jpeg",
+    //   name: "Utomobong Usoro",
+    //   role: "Moderator Instructor",
+    //   desc: `Crypto Enthusiast || Community Manger/Moderator || Crypto Writer || Freelancer.😎🥰`,
+    //   socials: [
+    //     {
+    //       name: <SiLinkedin />,
+    //       url: "https://www.linkedin.com/in/utomobong-usoro-a3147a143"
+    //     },
+    //     { name: <SiTwitter />, url: "https://twitter.com/Utybby?s=08" },
+    //     { name: <SiTelegram />, url: "https://t.me/Utygirl" }
+    //   ]
+    // },
   ];
   return (
     <div id="team" className="mb-[200px]">
@@ -138,12 +152,12 @@ const Team = () => {
               >
                 <Image
                   className="grayscale"
-                  src={img}
+                  src={member.dp ? img : "/avatar.png"}
                   layout="fill"
                   objectFit="cover"
                   objectPosition={"top"}
                   placeholder="blur"
-                  blurDataURL={img}
+                  blurDataURL={member.dp ? img : "/avatar.png"}
                   priority
                   alt={member.name}
                   quality={100}
