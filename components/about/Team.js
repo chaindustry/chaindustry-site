@@ -16,34 +16,10 @@ const Team = () => {
         { name: <SiTwitter />, url: "https://twitter.com/withempato" }
       ]
     },
-    // {
-    //   dp: "ubong.JPG",
-    //   name: "UbongAbasi Ukpong",
-    //   role: "COO",
-    //   socials: [
-    //     { name: <SiTwitter />, url: "https://twitter.com/ubnyah" },
-    //     { name: <SiTelegram />, url: "https://t.me/Ubukpong" },
-    //     { name: <SiDiscord />, url: "https://discordapp.com/users/ubie#4094" }
-    //   ]
-    // },
-    // {
-    //   dp: "idong.JPG",
-    //   name: "Idongesit Ita",
-    //   role: "CFO",
-    //   desc: `HR/Finance Manager at Chaindustry Digital Agency, A Community Manager, Crypto Enthusiast, Freelance UX Designer. I am smart, Tech Saavy with interest in Web 3.0 and a very fast and dedicated learner`,
-    //   socials: [
-    //     {
-    //       name: <SiLinkedin />,
-    //       url: "https://www.linkedin.com/in/idongesit-ita-acipm-575647208"
-    //     },
-    //     { name: <SiTwitter />, url: "https://twitter.com/Lordiesheila" },
-    //     { name: <SiTelegram />, url: "https://t.me/SheilaElite" }
-    //   ]
-    // },
     {
       dp: "paul.JPG",
       name: "John Harnie Paul",
-      role: "IT Consultant",
+      role: "CTO",
       desc: "Techpreneur || Fullstack || React native pro and Node Express js || CEO Orizon24 Solutions and Cashio",
       socials: [
         { name: <SiTwitter />, url: "https://twitter.com/john_harnie" },
@@ -57,7 +33,7 @@ const Team = () => {
     {
       dp: "igunnu.jpeg",
       name: "Igunnu Emmanuel",
-      role: "CTO",
+      role: "Developer",
       desc: "Blockchain || Web3 || NFT Degen. Backend Guru.",
       socials: [
         { name: <SiTelegram />, url: "https://t.me/js_genin" },
@@ -117,6 +93,13 @@ const Team = () => {
         { name: <SiTwitter />, url: "https://twitter.com/Deenigma4" },
         { name: "", url: "" }
       ]
+    },
+    {
+      dp: "",
+      name: "Ukpemonong Friday",
+      role: "HR Manager",
+      desc: "Sui generis",
+      socials: []
     }
     // {
     //   dp: "utty.jpeg",

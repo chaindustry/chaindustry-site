@@ -4,7 +4,7 @@ import React from "react";
 const PageImage = () => {
   return (
     <div
-      className="relative h-[231px] mt-[47px] mb-[100px] mx-[-24px]
+      className="relative h-[231px] mt-[47px] mb-[50px] mx-[-24px]
     sm:h-[250px]
     md:h-[300px]
     lg:h-[390px]
