@@ -5,8 +5,8 @@ import Link from "next/link";
 import { appName } from "../../variables";
 const Upgrade = () => {
   const plans = [
-    { amount: 12, dur: "Year" },
-    { amount: 1.5, dur: "Month" },
+    { amount: 48, dur: "Year" },
+    { amount: 5, dur: "Month" }
   ];
   const [selectedPlan, setSelectedPlan] = useState(plans[0]);
   return (
@@ -62,7 +62,7 @@ const Upgrade = () => {
               // scale: 0,
               transformOrigin: "bottom",
               y: 60,
-              transition: { duration: 0.2 },
+              transition: { duration: 0.2 }
             }}
             //   layout="position"
             className="bg-secondary-50 inline-block rounded-[51px] h-[26px] tracking-[-2%] leading-[150%] text-[12px] font-sfLight px-[8px] py-[4px] mb-[53.76px]
@@ -100,7 +100,7 @@ const Upgrade = () => {
       <Link
         href={{
           query: { plan: selectedPlan.dur },
-          pathname: `${appName}/profile/upgrade`,
+          pathname: `${appName}/profile/upgrade`
         }}
       >
         <a rel="noreferrer" target="_blank">

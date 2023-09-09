@@ -12,7 +12,7 @@ const OnBoard = () => {
       id: 1,
       img: "man-phone",
       title: "Simple Task & Earn",
-      desc: "We have 8 varieties of task you can earn from. You can earn CSPD points while learning, Streaming, Sleeping, Predicting, Freelancing, Promoting, Engaging or referring.",
+      desc: "We have varieties of task you can earn from. You can earn valuable points while learning, Engaging, Predicting, Sleeping or referring.",
       action_text: "Get Started, it’s free"
     },
     {
