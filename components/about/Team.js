@@ -81,7 +81,7 @@ const Team = () => {
       ]
     },
     {
-      dp: "",
+      dp: "affia.jpg",
       name: "Emmanuel Afia",
       role: "Marketing Manager",
       desc: "Sui generis",
@@ -95,10 +95,10 @@ const Team = () => {
       ]
     },
     {
-      dp: "",
+      dp: "friday.jpg",
       name: "Ukpemonong Friday",
       role: "HR Manager",
-      desc: "Sui generis",
+      desc: "",
       socials: []
     }
     // {
