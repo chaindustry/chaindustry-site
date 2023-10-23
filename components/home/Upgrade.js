@@ -1,14 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppButton from "../button/AppButton";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { appName } from "../../variables";
+import baseUrl from "../../baseUrl";
+
 const Upgrade = () => {
-  const plans = [
-    { amount: 48, dur: "Year" },
-    { amount: 5, dur: "Month" }
+  const plans_ = [
+    { amount: 0, dur: "Year" },
+    { amount: 0, dur: "Month" }
   ];
+  const [state, setState] = useState({
+    loading: false,
+    plans: plans_,
+    error: false
+  });
+  const plans = state.plans;
+  const loading = state.loading;
   const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+
+  const handleState = (change) => setState((prev) => ({ ...prev, ...change }));
+
+  const fetchRate = async () => {
+    try {
+      handleState({ loading: true });
+      const res = await (
+        await fetch(`${baseUrl}/admin/settings`, { cache: "force-cache" })
+      ).json();
+      if (res?.success) {
+        const data = res?.data;
+        const pl = [
+          { dur: plans_[0].dur, amount: data?.premiumYearly },
+          { dur: plans_[1].dur, amount: data?.premiumMonthly }
+        ];
+        handleState({
+          loading: false,
+          error: false,
+          plans: pl
+        });
+        setSelectedPlan(pl[0]);
+      } else {
+        handleState({ loading: false, error: true });
+      }
+    } catch (err) {
+      console.log(err);
+      handleState({ loading: false, error: true });
+    }
+  };
+  useEffect(() => {
+    fetchRate();
+  }, []);
+
+  const fullYearPlan = plans[1].amount * 12;
+  const saveAmount = fullYearPlan - selectedPlan.amount;
+  const savePercentage =
+    selectedPlan.dur === plans[0].dur && (saveAmount / fullYearPlan) * 100;
+
+  console.log(savePercentage);
   return (
     // <motion.div
     // //   layout
@@ -41,7 +89,7 @@ const Upgrade = () => {
           lg:text-[64px] lg:leading-[76.38px] lg:tracking-[-0.06em]
           "
         >
-          ${selectedPlan?.amount}
+          ${loading ? "..." : state.error ? "error" : selectedPlan?.amount}
         </span>
         <span
           className="font-sfLight leading-[30px] text-[20px] tracking-[-2%]
@@ -69,7 +117,7 @@ const Upgrade = () => {
               md:h-[35px] md:text-[1em] md:px-[1em] md:mb-[24px]
               "
           >
-            Save 20%
+            Save {savePercentage}%
           </motion.div>
         )}
       </AnimatePresence>
@@ -83,7 +131,12 @@ const Upgrade = () => {
           return (
             <motion.div
               layout="position"
-              onClick={() => setSelectedPlan(c)}
+              onClick={() => {
+                setSelectedPlan(c);
+                if (state.error) {
+                  fetchRate();
+                }
+              }}
               key={id}
               className={`cursor-pointer font-sfLight tracking-[-0.02em] leading-[150%] text-[12px] h-[34px] inline-flex items-center px-[16px] rounded-[20px] justify-center ${
                 c.dur === selectedPlan.dur ? "bg-primary-10 text-grey-90" : ""
