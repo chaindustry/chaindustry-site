@@ -10,7 +10,7 @@ const Footer = () => {
       { label: "About", path: "/about" },
       { label: "Our services", path: "/about#services" },
       { label: "Team", path: "/about#team" },
-      { label: "Blog", path: "https://www.blog.chaindustry.io" },
+      { label: "Blog", path: "https://blog.chaindustry.io" },
       { label: "FAQs", path: "/#faqs" }
     ],
     misc: [

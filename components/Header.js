@@ -38,8 +38,8 @@ const Header = () => {
   let navs = [
     { label: "About Us", path: "/about" },
     // { label: "Our services", path: "/services" },
-    { label: "Blog", path: "https://www.blog.chaindustry.io" },
-    { label: "Academy", path: "https://www.academy.chaindustry.io" }
+    { label: "Blog", path: "https://blog.chaindustry.io" },
+    { label: "Academy", path: "https://academy.chaindustry.io" }
   ];
   const [show, setShow] = useState(false);
   const toggleNav = (bool) => {
