@@ -1,4 +1,5 @@
-export const appName = "https://chainapp.vercel.app";
+// export const appName = "https://chainapp.vercel.app";
+export const appName = "https://app.chaindustry.io";
 const getTasks = [
   "EngageToEarn",
   // "PromoteToearn",
