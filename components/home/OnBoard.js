@@ -103,7 +103,7 @@ const OnBoard = () => {
           1: "h-[556px] w-[449px] right-[-41px] mb-[41px] md:right-[0px] md:h-[700px] md:w-[600px] z-[2]",
           2: "h-[280px] w-[222.64px] m-auto mb-[55px] md:m-[unset] md:w-[180px] md:h-[240px]",
           3: "h-[291px] w-[179px] m-auto mb-[33px]",
-          4: "h-[197px] w-[249px] m-auto mb-[27px]"
+          4: "h-[197px] w-[249px] m-auto mb-[27px]  md:m-[unset] md:w-[240px] md:h-[240px]"
         };
 
         return (
@@ -112,11 +112,12 @@ const OnBoard = () => {
             // transition={{ delay: 0, duration: 0.5, type: "tween" }}
             // whileInView={{ opacity: 1, y: 0 }}
             key={id}
-            className={`mb-[110px] ${index === 3 && "mb-[128px]"} relative 
-            md:flex md:items-center md:px-[40px]
-            ${index === 2 ? "md:flex-row" : "md:flex-row-reverse"}
-            ${index === 1 ? "md:pr-0 md:items-start" : ""}
-            `}
+            className={`
+    relative mb-[110px] md:flex md:items-center md:px-10
+    ${index === 3 && "mb-[128px]"}
+    ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+    ${index === 0 && "md:pr-0 md:items-start"}
+  `}
           >
             <div
               className={`${

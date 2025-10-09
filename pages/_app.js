@@ -5,6 +5,9 @@ import Header from "../components/Header";
 import Footer from "../components/home/Footer";
 import "../styles/globals.scss";
 import Script from "next/script";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function MyApp({ Component, pageProps }) {
   // scroll();

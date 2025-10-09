@@ -4,6 +4,18 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+  "bg-gradient-to-br",
+  "from-[#C7EAB0]", "to-[#8AD2C4]",
+  "from-[#FFE5D6]", "to-[#EDB99C]",
+  "from-[#EFDDFF]", "to-[#B68BDC]",
+  "from-[#FEE2B8]", "to-[#FDA061]",
+  "from-[#FDA061]", "to-[#FADC7D]",
+  "from-[#FEC493]", "to-[#FD9491]",
+  "from-[#FCDFFF]", "to-[#E3A0E9]",
+  "from-[#CBFCFF]", "to-[#7AD8DE]",
+],
+
   theme: {
     extend: {
       fontFamily: {

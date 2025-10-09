@@ -22,6 +22,11 @@ import { appName } from "../../variables";
 import Footer from "./Footer";
 import Reviews from "./Reviews";
 import globalDisabled from "../about/globalDisabled";
+import StartTodoEarn from "./StartTodoEarn";
+import AmazingFeature from "./AmazingFeature";
+import BecomeTutor from "./BecomeTutor";
+import ClientsReviews from "./ClientsReviews";
+import ExploreSec from "./ExploreSec";
 
 const Home = () => {
   const [constants, setConstants] = useState({
@@ -393,6 +398,11 @@ const Home = () => {
       </section>
       {/* <ScrollContent /> */}
       {/* <LayoutGroup> */}
+      <StartTodoEarn/>
+      <AmazingFeature/>
+      <ExploreSec/>
+      <BecomeTutor/>
+      <ClientsReviews/>
       <OnBoard />
       <Upgrade />
       <Reviews />
