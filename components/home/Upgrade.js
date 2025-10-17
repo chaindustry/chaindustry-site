@@ -156,7 +156,7 @@ const Upgrade = () => {
           pathname: `${appName}/profile/upgrade`
         }}
       >
-        <a rel="noreferrer" target="_blank">
+        <a rel="noreferrer" target="_blank" className="mt-[24px] block">
           <AppButton
             sxclass={"!rounded-[12px]"}
             variant="secondary"
