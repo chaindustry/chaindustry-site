@@ -134,8 +134,8 @@ const OnBoard = () => {
                   placeholder="blur"
                   blurDataURL={img}
                   priority
-                  height={index === 1 && 556}
-                  width={index === 1 && 449}
+                  height={index === 1 && 430}
+                  width={index === 1 && 430}
                   objectFit="contain"
                   quality={100}
                   alt={id}

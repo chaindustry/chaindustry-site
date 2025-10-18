@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { features } from "../../functions";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import CampaignCard from "./CampaignCard";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 // === Animation Variants ===
 const fadeUp = {
@@ -35,9 +37,10 @@ const container = {
   },
 };
 
+
 const AmazingFeature = () => {
   return (
-    <section className="relative max-w-7xl mx-auto px-6 sm:px-8 py-24 text-white overflow-hidden">
+    <section id="amaze" className="relative max-w-7xl mx-auto px-6 sm:px-8 py-24 text-white overflow-hidden">
       {/* === Tag === */}
       <motion.div
         variants={fadeUp}
@@ -55,6 +58,7 @@ const AmazingFeature = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
+        id='title1'
         className="text-4xl sm:text-5xl font-bold mb-2 leading-[1.2] pb-[2px] bg-gradient-to-tr from-[#FFFFFF] to-[#71717A] bg-clip-text text-transparent"
       >
         Everything you need.

@@ -70,6 +70,16 @@ const Home = () => {
       "predict"
     ]
   });
+  
+  const fadeUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay, ease: "easeOut" },
+  },
+});
+
   gsap.registerPlugin(ScrollTrigger);
   const ref = useRef(null);
   useEffect(() => {
@@ -257,46 +267,62 @@ const Home = () => {
       {/* <Header /> */}
       <section className="flex flex-col items-center">
         <div className="text-center mb-[40px] flex flex-col items-center">
-          <div
-            className="font-sfBold leading-[50.33px] text-[40px] tracking-[-0.035em] max-w-[329px] mb-4
+      <motion.div
+        className="text-center mb-[40px] flex flex-col items-center"
+        variants={fadeUp(0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <motion.div
+          className="font-sfBold leading-[50.33px] text-[40px] tracking-[-0.035em] max-w-[329px] mb-4
              md:text-[60px] md:max-w-[561px] md:leading-[70px] 
              lg:text-[72px] lg:leading-[91px]"
-          >
-            DoToEarn with chaindustry.
-          </div>
-          <span
-            className="max-w-[272px] text-base tracking-[-0.03em] text-[color:var(--primary-0)] 
+          variants={fadeUp(0.2)}
+        >
+          DoToEarn with chaindustry.
+        </motion.div>
+
+        <motion.span
+          className="max-w-[272px] text-base tracking-[-0.03em] text-[color:var(--primary-0)] 
           md:max-w-[500px] md:text-[20px] md:leading-[30px] 
           lg:text-[24px]  lg:max-w-[587px] lg:leading-[36px]"
-          >
-            Participate in our DoToearn ecosystem and earn awesome rewards.
-          </span>
-        </div>
-        <div
-          className="flex justify-center gap-4 mb-[99px]
-        md:mb-[60px]
-        lg:mb-[40px]
-        "
+          variants={fadeUp(0.3)}
         >
-          <Link href={`${appName}/signup`}>
-            <a disabled={globalDisabled}>
-              <AppButton size="lg" label="Get Started" variant="secondary" />
-            </a>
-          </Link>
-          <Link
-            href={{
-              pathname: `${appName}/login`,
-              query: {
-                url_source: "landing_page",
-                referrer: "chaindustry"
-              }
-            }}
-          >
-            <a disabled={globalDisabled}>
-              <AppButton size="lg" label="Log In" variant="ghost" />
-            </a>
-          </Link>
-        </div>
+          Participate in our DoToearn ecosystem and earn awesome rewards.
+        </motion.span>
+      </motion.div>
+
+      {/* === Button Section === */}
+      <motion.div
+        className="flex justify-center gap-4 mb-[99px]
+        md:mb-[60px]
+        lg:mb-[40px]"
+        variants={fadeUp(0.5)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <Link href={`${appName}/signup`}>
+          <a disabled={globalDisabled}>
+            <AppButton size="lg" label="Get Started" variant="secondary" />
+          </a>
+        </Link>
+        <Link
+          href={{
+            pathname: `${appName}/login`,
+            query: {
+              url_source: "landing_page",
+              referrer: "chaindustry",
+            },
+          }}
+        >
+          <a disabled={globalDisabled}>
+            <AppButton size="lg" label="Log In" variant="ghost" />
+          </a>
+        </Link>
+      </motion.div>
+      </div>
         {/* Animation Panel for tasks */}
 
         <div
