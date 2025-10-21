@@ -8,10 +8,10 @@ const CampaignCard = () => {
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
       className="relative text-white rounded-2xl  0 transition-all duration-300"
-      style={{
-        backgroundColor: "#18063580", // ← 50% opacity version of your figma color
-        backdropFilter: "blur(12px)", // keeps that glassy soft feel
-      }}
+      // style={{
+      //   backgroundColor: "#18063580", // ← 50% opacity version of your figma color
+      //   backdropFilter: "blur(12px)", // keeps that glassy soft feel
+      // }}
     >
       {/* Image Section */}
       <div className="relative">

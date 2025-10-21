@@ -428,7 +428,7 @@ const Home = () => {
       <AmazingFeature/>
       <ExploreSec/>
       <BecomeTutor/>
-      <ClientsReviews/>
+      {/* <ClientsReviews/> */}
       <OnBoard />
       <Upgrade />
       <Reviews />

@@ -27,6 +27,15 @@ const Faq = () => {
     },
   };
 
+  const fadeUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay, ease: "easeOut" },
+  },
+});
+
   return (
     <motion.div
       id="faqs"
@@ -49,6 +58,10 @@ const Faq = () => {
             const isActive = clicked?.id === faq.id;
             return (
               <motion.div
+               variants={fadeUp(0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
                 layout
                 onClick={() => setClicked(isActive ? null : faq)}
                 key={id}

@@ -24,7 +24,7 @@ const StartTodoEarn = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 text-white">
+    <section className="max-w-7xl mx-auto px-6  text-white">
       {/* Header */}
       <motion.div
         variants={containerVariants}
@@ -54,7 +54,7 @@ const StartTodoEarn = () => {
             key={index}
             variants={cardVariants}
             // 🪄 SMOOTH hover + return motion
-            className={`${item.gradient} p-6 rounded-[20px] border border-white/10 flex flex-col justify-between h-48 cursor-pointer transition-all duration-300`}
+            className={`${item.gradient} p-6 rounded-[20px] border border-white/10 flex flex-col justify-between h-56 cursor-pointer transition-all duration-300`}
           >
             {/* Image */}
             <motion.img
@@ -72,8 +72,8 @@ const StartTodoEarn = () => {
             {/* Text Section */}
             <div>
               <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-
-              {index === 0 ? (
+              <p className="text-sm mb-4">{item.description}</p>
+              {/* {index === 0 ? (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -94,7 +94,7 @@ const StartTodoEarn = () => {
                 >
                   <MdKeyboardArrowRight />
                 </motion.button>
-              )}
+              )} */}
             </div>
           </motion.div>
         ))}

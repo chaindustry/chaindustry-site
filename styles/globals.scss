@@ -369,79 +369,58 @@ h6 {
     );
 }
 
-@keyframes glowMove {
-  0%, 100% {
-    background-position: 117.83% 100%;
-  }
-  50% {
-    background-position: 100% 80%;
-  }
+.energy-active circle {
+  filter: drop-shadow(0 0 10px #ff2d55) brightness(1.5);
 }
-
-.bg-radial-animate {
-  background: radial-gradient(
-      67.83% 112.02% at 117.83% 100%, 
-      rgba(222, 53, 97, 0.61) 0%, 
-      rgba(0, 0, 0, 0) 100%
-    ),
-    linear-gradient(
-      0deg, 
-      rgba(81, 81, 81, 0.2), 
-      rgba(81, 81, 81, 0.2)
-    );
-  animation: glowMove 10s ease-in-out infinite;
-  background-repeat: no-repeat;
-  background-size: 150% 150%;
-}
-
 
 .glow-card {
-  --start: 0;
+  --start: 0deg;
+  --x: 50%;
+  --y: 50%;
   position: relative;
-  z-index: 40;
   overflow: hidden;
-  transition: border-color 1s ease-in-out;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
 }
 
 .glow-card::before {
-  position: absolute;
   content: "";
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 12px;
-  border: 2px solid transparent;
-  background: var(--gradient);
-  background-attachment: fixed;
-  mask: linear-gradient(#0000, #0000),
-    conic-gradient(
-      from calc((var(--start) - 15) * 1deg),
-      #ffffff1f 0deg,
-      white,
-      #ffffff00 100deg
-    );
-  mask-composite: intersect;
-  mask-clip: padding-box, border-box;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: conic-gradient(from var(--start), #ff2d55, #ff8ea0, #ff2d55);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
   opacity: 0;
-  transition: 0.5s ease;
+  transition: opacity 0.3s ease;
 }
 
 .glow-card:hover::before {
   opacity: 1;
+  animation: border-flow 2s linear infinite;
 }
 
-.glow {
+.glow-card .glow {
   pointer-events: none;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(10px);
-  filter: saturate(200);
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(255, 255, 255, 0.15),
+    transparent 60%
+  );
+  transition: background 0.1s ease;
+}
+
+@keyframes border-flow {
+  0% {
+    --start: 0deg;
+  }
+  100% {
+    --start: 360deg;
+  }
 }
 
 

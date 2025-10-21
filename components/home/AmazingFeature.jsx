@@ -124,13 +124,13 @@ const AmazingFeature = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+        className=" mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
       >
         {/* === Left Card === */}
   <motion.div
     variants={fadeInLeft}
     whileHover={{ scale: 1.02 }}
-    className="md:col-span-2 bg-[#180635] rounded-2xl border border-white/10 hover:border-white/30 transition duration-300 p-8 flex flex-col justify-between"
+    className="cards md:col-span-2 bg-[#180635] rounded-2xl border border-white/10 hover:border-white/30 transition duration-300 p-8 flex flex-col justify-between"
   >
     <motion.div
       initial={{ y: 15 }}
@@ -187,7 +187,7 @@ const AmazingFeature = () => {
     variants={fadeInRight}
     whileHover={{ scale: 1.03 }}
     transition={{ type: "spring", stiffness: 200 }}
-    className="md:col-span-1 bg-[#180635] rounded-2xl border border-white/10 hover:border-white/30 transition duration-300 p-6 sm:p-8 flex flex-col"
+    className="cards md:col-span-1 bg-[#180635] rounded-2xl border border-white/10 hover:border-white/30 transition duration-300 p-6 sm:p-8 flex flex-col"
   >
     <img
       src="/AmazingFeaturesPics/keyboard.png"

@@ -8,27 +8,27 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 const OnBoard = () => {
   let details = [
-    {
-      id: 1,
-      img: "man-phone",
-      title: "Simple Task & Earn",
-      desc: "We have varieties of task you can earn from. You can earn valuable points while learning, Engaging, Predicting, Sleeping or referring.",
-      action_text: "Get Started, it’s free"
-    },
-    {
-      id: 2,
-      img: "nft",
-      title: "Exchange CDSP for fiat, crypto or NFT",
-      desc: "CDSP are not just mere points, they can be exchanged for crypto.",
-      action_text: "Get Started, it’s free"
-    },
-    {
-      id: 3,
-      img: "medal",
-      title: "Get on top of the leaderboard",
-      desc: "Earn special rewards by getting a place on the leaderboard.",
-      action_text: "Start earning"
-    },
+    // {
+    //   id: 1,
+    //   img: "man-phone",
+    //   title: "Simple Task & Earn",
+    //   desc: "We have varieties of task you can earn from. You can earn valuable points while learning, Engaging, Predicting, Sleeping or referring.",
+    //   action_text: "Get Started, it’s free"
+    // },
+    // {
+    //   id: 2,
+    //   img: "nft",
+    //   title: "Exchange CDSP for fiat, crypto or NFT",
+    //   desc: "CDSP are not just mere points, they can be exchanged for crypto.",
+    //   action_text: "Get Started, it’s free"
+    // },
+    // {
+    //   id: 3,
+    //   img: "medal",
+    //   title: "Get on top of the leaderboard",
+    //   desc: "Earn special rewards by getting a place on the leaderboard.",
+    //   action_text: "Start earning"
+    // },
     {
       id: 4,
       img: "premium",
