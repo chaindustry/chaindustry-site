@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const fadeIn = (direction = "up", delay = 0) => ({
   hidden: {
@@ -18,21 +18,38 @@ const fadeIn = (direction = "up", delay = 0) => ({
 
 const ExploreSec = () => {
   const [active, setActive] = useState(false);
-  const [inView, setInView] = useState(false);
-  const diagramRef = useRef(null);
+
+  // 👁️ Detect when section is in view
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.3, once: false });
+
+  // 🎛️ Control animations manually
+  const circleControls1 = useAnimation();
+  const circleControls2 = useAnimation();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-
-    if (diagramRef.current) observer.observe(diagramRef.current);
-    return () => observer.disconnect();
-  }, []);
+    if (isInView) {
+      // Resume animation when visible
+      circleControls1.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: active ? 1.5 : 3, repeat: Infinity, ease: "linear" },
+      });
+      circleControls2.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: active ? 2 : 4, repeat: Infinity, ease: "linear", delay: 0.3 },
+      });
+    } else {
+      // Pause animation when out of view
+      circleControls1.stop();
+      circleControls2.stop();
+    }
+  }, [isInView, active]);
 
   return (
-    <section className="relative max-w-7xl mx-auto px-6 sm:px-8 py-24 text-white overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative max-w-7xl mx-auto px-6 sm:px-8 py-24 text-white overflow-hidden"
+    >
       {/* Label */}
       <motion.div
         variants={fadeIn("up", 0.2)}
@@ -41,9 +58,7 @@ const ExploreSec = () => {
         viewport={{ once: true, amount: 0.4 }}
         className="bg-[#FFFFFF1A] px-4 py-1 rounded-[10px] w-fit mb-6"
       >
-        <p className="text-sm font-medium tracking-wide">
-          Chaindustry Ecosystem
-        </p>
+        <p className="text-sm font-medium tracking-wide">Chaindustry Ecosystem</p>
       </motion.div>
 
       {/* Headings */}
@@ -68,20 +83,14 @@ const ExploreSec = () => {
 
       {/* Diagram Container */}
       <div
-        ref={diagramRef}
         className={`relative bg-[#18063580] rounded-3xl p-12 flex flex-col items-center justify-center transition-all duration-500 ${
           active ? "energy-active" : ""
         }`}
       >
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-b bg-radial-fade opacity-40 " />
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-b bg-radial-fade opacity-40" />
 
         {/* Top Card */}
-        <motion.div
-          variants={fadeIn("up", 0.5)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
-        >
+        <motion.div variants={fadeIn("up", 0.5)} initial="hidden" whileInView="show" viewport={{once: true, amount: (0.4)}}>
           <Card
             title="DoToEarn"
             icon="/Explore/Dollar.png"
@@ -96,7 +105,7 @@ const ExploreSec = () => {
           variants={fadeIn("up", 0.6)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
+           viewport={{once: true, amount: (0.4)}}
           className="relative z-10 flex flex-wrap md:flex-nowrap justify-center items-center gap-12 mb-16 w-full max-w-3xl"
         >
           <Card title="Academy" icon="/Explore/academy.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
@@ -105,25 +114,12 @@ const ExploreSec = () => {
         </motion.div>
 
         {/* Bottom Card */}
-        <motion.div
-          variants={fadeIn("up", 0.7)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
-        >
-          <Card
-            title="Servicing"
-            icon="/Explore/service.png"
-            onHover={() => setActive(true)}
-            onLeave={() => setActive(false)}
-          />
+        <motion.div variants={fadeIn("up", 0.7)} initial="hidden" whileInView="show"  viewport={{once: true, amount: (0.4)}}>
+          <Card title="Servicing" icon="/Explore/service.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
         </motion.div>
 
-        {/* ⚡ SVG Connection Lines */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        {/* ⚡ Connection Lines + Moving Light Particles */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
           {/* Line 1 */}
           <motion.path
             d="M50 300 C350 100, 650 100, 950 300"
@@ -131,31 +127,19 @@ const ExploreSec = () => {
             strokeWidth="1.2"
             fill="none"
             initial={{ pathLength: 0, opacity: 0.3 }}
-            animate={{
-              pathLength: inView ? 1 : 0,
-              opacity: inView ? 0.6 : 0,
-            }}
+            animate={{ pathLength: 1, opacity: 0.6 }}
             transition={{ duration: 2 }}
           />
-          {inView && (
-            <motion.circle
-              r="6"
-              fill="#FF2D55"
-              filter="url(#glow)"
-              style={{
-                offsetPath: "path('M50 300 C350 100, 650 100, 950 300')",
-                offsetRotate: "auto",
-              }}
-              animate={{
-                offsetDistance: ["0%", "100%"],
-              }}
-              transition={{
-                duration: active ? 1.5 : 3,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-          )}
+          <motion.circle
+            r="6"
+            fill="#FF2D55"
+            filter="url(#glow)"
+            style={{
+              offsetPath: "path('M50 300 C350 100, 650 100, 950 300')",
+              offsetRotate: "auto",
+            }}
+            animate={circleControls1}
+          />
 
           {/* Line 2 */}
           <motion.path
@@ -164,32 +148,19 @@ const ExploreSec = () => {
             strokeWidth="1.2"
             fill="none"
             initial={{ pathLength: 0, opacity: 0.3 }}
-            animate={{
-              pathLength: inView ? 1 : 0,
-              opacity: inView ? 0.6 : 0,
-            }}
+            animate={{ pathLength: 1, opacity: 0.6 }}
             transition={{ duration: 2, delay: 0.5 }}
           />
-          {inView && (
-            <motion.circle
-              r="6"
-              fill="#FF2D55"
-              filter="url(#glow)"
-              style={{
-                offsetPath: "path('M150 450 C400 250, 600 250, 850 450')",
-                offsetRotate: "auto",
-              }}
-              animate={{
-                offsetDistance: ["0%", "100%"],
-              }}
-              transition={{
-                duration: active ? 2 : 4,
-                repeat: Infinity,
-                ease: "linear",
-                delay: 0.3,
-              }}
-            />
-          )}
+          <motion.circle
+            r="6"
+            fill="#FF2D55"
+            filter="url(#glow)"
+            style={{
+              offsetPath: "path('M150 450 C400 250, 600 250, 850 450')",
+              offsetRotate: "auto",
+            }}
+            animate={circleControls2}
+          />
 
           {/* Glow filter */}
           <defs>
@@ -207,7 +178,7 @@ const ExploreSec = () => {
   );
 };
 
-// === Interactive Card Component ===
+// === Card Component ===
 const Card = ({ title, icon, className, onHover, onLeave }) => {
   const cardRef = useRef(null);
 
