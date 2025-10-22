@@ -8,27 +8,27 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 const OnBoard = () => {
   let details = [
-    {
-      id: 1,
-      img: "man-phone",
-      title: "Simple Task & Earn",
-      desc: "We have varieties of task you can earn from. You can earn valuable points while learning, Engaging, Predicting, Sleeping or referring.",
-      action_text: "Get Started, it’s free"
-    },
-    {
-      id: 2,
-      img: "nft",
-      title: "Exchange CDSP for fiat, crypto or NFT",
-      desc: "CDSP are not just mere points, they can be exchanged for crypto.",
-      action_text: "Get Started, it’s free"
-    },
-    {
-      id: 3,
-      img: "medal",
-      title: "Get on top of the leaderboard",
-      desc: "Earn special rewards by getting a place on the leaderboard.",
-      action_text: "Start earning"
-    },
+    // {
+    //   id: 1,
+    //   img: "man-phone",
+    //   title: "Simple Task & Earn",
+    //   desc: "We have varieties of task you can earn from. You can earn valuable points while learning, Engaging, Predicting, Sleeping or referring.",
+    //   action_text: "Get Started, it’s free"
+    // },
+    // {
+    //   id: 2,
+    //   img: "nft",
+    //   title: "Exchange CDSP for fiat, crypto or NFT",
+    //   desc: "CDSP are not just mere points, they can be exchanged for crypto.",
+    //   action_text: "Get Started, it’s free"
+    // },
+    // {
+    //   id: 3,
+    //   img: "medal",
+    //   title: "Get on top of the leaderboard",
+    //   desc: "Earn special rewards by getting a place on the leaderboard.",
+    //   action_text: "Start earning"
+    // },
     {
       id: 4,
       img: "premium",
@@ -103,7 +103,7 @@ const OnBoard = () => {
           1: "h-[556px] w-[449px] right-[-41px] mb-[41px] md:right-[0px] md:h-[700px] md:w-[600px] z-[2]",
           2: "h-[280px] w-[222.64px] m-auto mb-[55px] md:m-[unset] md:w-[180px] md:h-[240px]",
           3: "h-[291px] w-[179px] m-auto mb-[33px]",
-          4: "h-[197px] w-[249px] m-auto mb-[27px]"
+          4: "h-[197px] w-[249px] m-auto mb-[27px]  md:m-[unset] md:w-[240px] md:h-[240px]"
         };
 
         return (
@@ -112,11 +112,12 @@ const OnBoard = () => {
             // transition={{ delay: 0, duration: 0.5, type: "tween" }}
             // whileInView={{ opacity: 1, y: 0 }}
             key={id}
-            className={`mb-[110px] ${index === 3 && "mb-[128px]"} relative 
-            md:flex md:items-center md:px-[40px]
-            ${index === 2 ? "md:flex-row" : "md:flex-row-reverse"}
-            ${index === 1 ? "md:pr-0 md:items-start" : ""}
-            `}
+            className={`
+    relative mb-[110px] md:flex md:items-center md:px-10
+    ${index === 3 && "mb-[128px]"}
+    ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+    ${index === 0 && "md:pr-0 md:items-start"}
+  `}
           >
             <div
               className={`${
@@ -133,8 +134,8 @@ const OnBoard = () => {
                   placeholder="blur"
                   blurDataURL={img}
                   priority
-                  height={index === 1 && 556}
-                  width={index === 1 && 449}
+                  height={index === 1 && 430}
+                  width={index === 1 && 430}
                   objectFit="contain"
                   quality={100}
                   alt={id}

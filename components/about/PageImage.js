@@ -11,7 +11,7 @@ const PageImage = () => {
     xl:h-[454px]"
     >
       <Image
-        src="/coins_img.png"
+        src="/coins_img.webp"
         layout="fill"
         objectFit="cover"
         priority

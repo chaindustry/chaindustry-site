@@ -78,9 +78,11 @@
 }
 .btn[data-variant="ghost"] {
   background-color: transparent;
+  border: 2px solid #DE3561;
 }
 .btn[data-variant="ghost"]:hover {
   background: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
 }
 .btn[data-disabled="true"][data-variant="primary"] {
   background-color: var(--primary-20);
