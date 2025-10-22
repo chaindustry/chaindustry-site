@@ -174,8 +174,8 @@ const AmazingFeature = () => {
         Upgrade to Premium to enjoy 2X rewards.
       </p>
       <a
-        href="#"
-        className="text-[#FF2D55] font-medium text-md hover:underline flex items-center"
+        href="https://app.chaindustry.io/tasks/trending"
+        className="text-[#FF2D55] font-medium text-md hover:underline flex hover:gap-2 items-center"
       >
         Start earning <MdKeyboardArrowRight />
       </a>

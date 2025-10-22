@@ -110,7 +110,7 @@ const ExploreSec = () => {
         >
           <Card title="Academy" icon="/Explore/academy.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
           <Card title="Blog/Vlog" icon="/Explore/blog.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
-          <Card title="Collections" icon="/Explore/invest.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
+          <Card title="Commitments" icon="/Explore/invest.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
         </motion.div>
 
         {/* Bottom Card */}

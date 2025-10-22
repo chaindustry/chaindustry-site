@@ -28,7 +28,8 @@ const BecomeTutor = () => {
             variants={fadeUp}
             className="text-4xl md:text-5xl font-bold leading-tight mb-6"
           >
-            Are you a professional? <br /> Become a tutor.
+            Unlock the Future
+            {/* Are you a professional? <br /> Become a tutor. */}
           </motion.h1>
 
           <motion.p
@@ -36,8 +37,7 @@ const BecomeTutor = () => {
             variants={fadeUp}
             className="text-gray-300 mb-8 max-w-md mx-auto md:mx-0"
           >
-            As a tutor you stand to gain this this and that. A lot of things
-            actually, whoever will fix the content will let you know, thanks!
+            Learn Web3. Create value. Earn while you grow.
           </motion.p>
 
           <motion.button
@@ -46,9 +46,10 @@ const BecomeTutor = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 200 }}
+            onDirectionLock={() => alert('joined')}
             className="bg-pink-600 hover:bg-gradient hover:from-pink-600 hover:to-purple-600 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 mb-4 md:mb-0 "
           >
-            Become a tutor
+            <a href="https://app.chaindustry.io/academy">Start Learning</a>            
           </motion.button>
         </motion.div>
 

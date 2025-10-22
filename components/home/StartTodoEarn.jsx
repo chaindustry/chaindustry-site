@@ -33,10 +33,10 @@ const StartTodoEarn = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="flex flex-wrap justify-between items-center mb-10 gap-4"
       >
-        <h2 className="text-2xl font-semibold">Start Do-To Earn</h2>
-        <button className="text-sm bg-white text-black border border-gray-300 rounded-md px-4 py-1 hover:bg-gray-100 transition">
+        <h2 className="text-2xl font-semibold">Earn in Every Way</h2>
+        {/* <button className="text-sm bg-white text-black border border-gray-300 rounded-md px-4 py-1 hover:bg-gray-100 transition">
           Browse all
-        </button>
+        </button> */}
       </motion.div>
 
       {/* Grid */}
@@ -54,7 +54,7 @@ const StartTodoEarn = () => {
             key={index}
             variants={cardVariants}
             // 🪄 SMOOTH hover + return motion
-            className={`${item.gradient} p-6 rounded-[20px] border border-white/10 flex flex-col justify-between h-56 cursor-pointer transition-all duration-300`}
+            className={`${item.gradient} p-6 rounded-[20px] border border-white/10 flex flex-col justify-between min-h-56 cursor-pointer transition-all duration-300`}
           >
             {/* Image */}
             <motion.img
