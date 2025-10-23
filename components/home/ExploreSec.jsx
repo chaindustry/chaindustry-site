@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import ChatSection from "./card/ChatBalloon";
 
 const fadeIn = (direction = "up", delay = 0) => ({
   hidden: {
@@ -83,7 +84,7 @@ const ExploreSec = () => {
 
       {/* Diagram Container */}
       <div
-        className={`relative bg-[#18063580] rounded-3xl p-12 flex flex-col items-center justify-center transition-all duration-500 ${
+        className={`relative bg-[#18063580] rounded-3xl p-12 md:p-16 flex flex-col items-center justify-center transition-all duration-500 ${
           active ? "energy-active" : ""
         }`}
       >

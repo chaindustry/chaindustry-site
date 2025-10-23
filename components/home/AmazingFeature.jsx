@@ -3,9 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { features } from "../../functions";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import CampaignCard from "./CampaignCard";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import CampaignCard from "./card/CampaignCard";
 
 // === Animation Variants ===
 const fadeUp = {
