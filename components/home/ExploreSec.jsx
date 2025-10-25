@@ -21,7 +21,7 @@ const cards = [
 const ExploreSec = () => {
   const [active, setActive] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [expandedCard, setExpandedCard] = useState(null); // for mobile dropdown
+  const [expandedCard, setExpandedCard] = useState(null);
 
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.3, once: false });
@@ -37,12 +37,13 @@ const ExploreSec = () => {
     Servicing: "Access ChainDustry's service marketplace and developer tools.",
   };
 
+  // 🔹 Animate glowing motion when section is visible
   useEffect(() => {
     if (isInView) {
       circleControls1.start({
         offsetDistance: ["0%", "100%"],
         transition: {
-          duration: active ? 1.5 : 3,
+          duration: 3,
           repeat: Infinity,
           ease: "linear",
         },
@@ -50,7 +51,7 @@ const ExploreSec = () => {
       circleControls2.start({
         offsetDistance: ["0%", "100%"],
         transition: {
-          duration: active ? 2 : 4,
+          duration: 4,
           repeat: Infinity,
           ease: "linear",
           delay: 0.3,
@@ -60,7 +61,32 @@ const ExploreSec = () => {
       circleControls1.stop();
       circleControls2.stop();
     }
-  }, [isInView, active]);
+  }, [isInView]);
+
+  // 🔹 Move the glow ball along the path on hover
+  useEffect(() => {
+    if (hoveredCard) {
+      // Move forward when hovered
+      circleControls1.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+      circleControls2.start({
+        offsetDistance: ["100%", "0%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+    } else {
+      // Return back when hover ends
+      circleControls1.start({
+        offsetDistance: ["100%", "0%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+      circleControls2.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+    }
+  }, [hoveredCard]);
 
   return (
     <section
@@ -105,13 +131,14 @@ const ExploreSec = () => {
         }`}
       >
         {/* Chat balloon for lg only */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           {hoveredCard && <ChatIcon text={descriptions[hoveredCard]} />}
         </div>
 
         {/* Top card */}
         <motion.div
           variants={fadeIn("up", 0.5)}
+           viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
           className="mb-10 sm:mb-16 w-full max-w-xs sm:max-w-sm md:max-w-none flex justify-center"
@@ -120,14 +147,8 @@ const ExploreSec = () => {
             title="DoToEarn"
             icon="/Explore/Dollar.png"
             description={descriptions["DoToEarn"]}
-            onHover={() => {
-              setActive(true);
-              setHoveredCard("DoToEarn");
-            }}
-            onLeave={() => {
-              setActive(false);
-              setHoveredCard(null);
-            }}
+            onHover={() => setHoveredCard("DoToEarn")}
+            onLeave={() => setHoveredCard(null)}
             expandedCard={expandedCard}
             setExpandedCard={setExpandedCard}
           />
@@ -136,9 +157,10 @@ const ExploreSec = () => {
         {/* Middle cards */}
         <motion.div
           variants={fadeIn("up", 0.6)}
+           viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
-          className="relative z-10 flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-10 mb-10 sm:mb-16 w-full max-w-3xl"
+          className="relative z-10 flex flex-col md:flex-wrap md:flex-row lg:flex-nowrap justify-center items-center gap-6 sm:gap-10 mb-10 sm:mb-16 w-full max-w-3xl"
         >
           {cards.map(({ title, icon }) => (
             <Card
@@ -146,14 +168,8 @@ const ExploreSec = () => {
               title={title}
               icon={icon}
               description={descriptions[title]}
-              onHover={() => {
-                setActive(true);
-                setHoveredCard(title);
-              }}
-              onLeave={() => {
-                setActive(false);
-                setHoveredCard(null);
-              }}
+              onHover={() => setHoveredCard(title)}
+              onLeave={() => setHoveredCard(null)}
               expandedCard={expandedCard}
               setExpandedCard={setExpandedCard}
             />
@@ -163,6 +179,7 @@ const ExploreSec = () => {
         {/* Bottom card */}
         <motion.div
           variants={fadeIn("up", 0.7)}
+          viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
           className="w-full max-w-xs sm:max-w-sm md:max-w-none flex justify-center"
@@ -171,20 +188,14 @@ const ExploreSec = () => {
             title="Servicing"
             icon="/Explore/service.png"
             description={descriptions["Servicing"]}
-            onHover={() => {
-              setActive(true);
-              setHoveredCard("Servicing");
-            }}
-            onLeave={() => {
-              setActive(false);
-              setHoveredCard(null);
-            }}
+            onHover={() => setHoveredCard("Servicing")}
+            onLeave={() => setHoveredCard(null)}
             expandedCard={expandedCard}
             setExpandedCard={setExpandedCard}
           />
         </motion.div>
 
-        {/* Keep existing SVG */}
+        {/* Keep existing SVG but now motion-aware */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
           xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +253,7 @@ const ExploreSec = () => {
   );
 };
 
-// === Card Component (Hover for lg, Click-to-expand for sm) ===
+// === Card Component ===
 const Card = ({
   title,
   icon,
@@ -259,7 +270,7 @@ const Card = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={() =>
-        window.innerWidth < 768 &&
+        window.innerWidth < 1024 &&
         setExpandedCard(isExpanded ? null : title)
       }
       whileHover={{ scale: 1.05 }}
@@ -270,8 +281,6 @@ const Card = ({
         <img src={icon} alt={title} className="w-6 h-6" />
         <p className="font-medium text-sm sm:text-base">{title}</p>
       </div>
-
-      {/* Dropdown for mobile */}
       {isExpanded && (
         <motion.p
           initial={{ opacity: 0, y: -8 }}
