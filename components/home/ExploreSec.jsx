@@ -42,20 +42,11 @@ const ExploreSec = () => {
     if (isInView) {
       circleControls1.start({
         offsetDistance: ["0%", "100%"],
-        transition: {
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-        },
+        transition: { duration: 3, repeat: Infinity, ease: "linear" },
       });
       circleControls2.start({
         offsetDistance: ["0%", "100%"],
-        transition: {
-          duration: 4,
-          repeat: Infinity,
-          ease: "linear",
-          delay: 0.3,
-        },
+        transition: { duration: 4, repeat: Infinity, ease: "linear", delay: 0.3 },
       });
     } else {
       circleControls1.stop();
@@ -66,7 +57,6 @@ const ExploreSec = () => {
   // 🔹 Move the glow ball along the path on hover
   useEffect(() => {
     if (hoveredCard) {
-      // Move forward when hovered
       circleControls1.start({
         offsetDistance: ["0%", "100%"],
         transition: { duration: 1.2, ease: "easeInOut" },
@@ -76,7 +66,6 @@ const ExploreSec = () => {
         transition: { duration: 1.2, ease: "easeInOut" },
       });
     } else {
-      // Return back when hover ends
       circleControls1.start({
         offsetDistance: ["100%", "0%"],
         transition: { duration: 1.2, ease: "easeInOut" },
@@ -87,6 +76,16 @@ const ExploreSec = () => {
       });
     }
   }, [hoveredCard]);
+
+  // 🔹 Auto-demo: briefly show one chat balloon after entering viewport
+  useEffect(() => {
+    const timer1 = setTimeout(() => setHoveredCard("DoToEarn"), 1000);
+    const timer2 = setTimeout(() => setHoveredCard(null), 3500);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <section
@@ -124,6 +123,16 @@ const ExploreSec = () => {
         Ecosystem
       </motion.h1>
 
+      {/* Hover / Tap Hint */}
+      <div className="text-center mb-6">
+        <p className="hidden lg:block text-sm text-gray-400 animate-pulse">
+          💡 Hover on a card to chat
+        </p>
+        <p className="lg:hidden text-sm text-gray-400 animate-pulse">
+          💡 Tap a card to see more
+        </p>
+      </div>
+
       {/* Diagram Container */}
       <div
         className={`relative bg-[#18063580] rounded-3xl p-6 sm:p-12 md:p-16 flex flex-col items-center justify-center transition-all duration-500 ${
@@ -138,7 +147,7 @@ const ExploreSec = () => {
         {/* Top card */}
         <motion.div
           variants={fadeIn("up", 0.5)}
-           viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
           className="mb-10 sm:mb-16 w-full max-w-xs sm:max-w-sm md:max-w-none flex justify-center"
@@ -151,13 +160,14 @@ const ExploreSec = () => {
             onLeave={() => setHoveredCard(null)}
             expandedCard={expandedCard}
             setExpandedCard={setExpandedCard}
+            hoveredCard={hoveredCard}
           />
         </motion.div>
 
         {/* Middle cards */}
         <motion.div
           variants={fadeIn("up", 0.6)}
-           viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
           className="relative z-10 flex flex-col md:flex-wrap md:flex-row lg:flex-nowrap justify-center items-center gap-6 sm:gap-10 mb-10 sm:mb-16 w-full max-w-3xl"
@@ -172,6 +182,7 @@ const ExploreSec = () => {
               onLeave={() => setHoveredCard(null)}
               expandedCard={expandedCard}
               setExpandedCard={setExpandedCard}
+              hoveredCard={hoveredCard}
             />
           ))}
         </motion.div>
@@ -192,10 +203,11 @@ const ExploreSec = () => {
             onLeave={() => setHoveredCard(null)}
             expandedCard={expandedCard}
             setExpandedCard={setExpandedCard}
+            hoveredCard={hoveredCard}
           />
         </motion.div>
 
-        {/* Keep existing SVG but now motion-aware */}
+        {/* SVG connections */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
           xmlns="http://www.w3.org/2000/svg"
@@ -249,6 +261,19 @@ const ExploreSec = () => {
           </defs>
         </svg>
       </div>
+
+      {/* Custom animations */}
+      <style>
+        {`
+          @keyframes pulseSlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+          }
+          .animate-pulse-slow {
+            animation: pulseSlow 2.5s infinite ease-in-out;
+          }
+        `}
+      </style>
     </section>
   );
 };
@@ -262,20 +287,25 @@ const Card = ({
   onLeave,
   expandedCard,
   setExpandedCard,
+  hoveredCard,
 }) => {
   const isExpanded = expandedCard === title;
-
   return (
     <motion.div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={() =>
-        window.innerWidth < 1024 &&
-        setExpandedCard(isExpanded ? null : title)
+        window.innerWidth < 1024 && setExpandedCard(isExpanded ? null : title)
       }
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
-      className="relative z-20 rounded-xl bg-radial-fade px-6 py-4 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_15px_#FF2D55]/20 min-w-[180px] sm:min-w-[230px] text-center cursor-pointer glow-card"
+      className={`relative z-20 rounded-xl bg-radial-fade px-6 py-4 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all duration-300 
+      shadow-[0_0_15px_#FF2D55]/20 min-w-[180px] sm:min-w-[230px] text-center cursor-pointer
+      ${
+        hoveredCard === title
+          ? "animate-none"
+          : "animate-pulse-slow hover:shadow-[0_0_25px_#FF2D55]/40"
+      }`}
     >
       <div className="flex items-center gap-3 justify-center">
         <img src={icon} alt={title} className="w-6 h-6" />
