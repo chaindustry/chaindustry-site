@@ -60,17 +60,17 @@ const doToEarnItems = [
 
 const features = [
   {
-    img: "/AmazingFeaturesPics/pic1.png",
+    img: "/features/pic1.png",
     title: "Simple Task & Earn",
     desc: "We have 8 varieties of task you can earn from.You can earn CDSP points while learning, Streaming, Sleeping, Predicting, Freelancing, Promoting, Engaging or referring.",
   },
   {
-    img: "/AmazingFeaturesPics/pic2.png",
+    img: "/features/pic2.png",
     title: "Exchange CDSP for fiat, crypto or NFT",
     desc: "CDSP are not just mere points; they can be exchanged for crypto.",
   },
   {
-    img: "/AmazingFeaturesPics/pics3.png",
+    img: "/features/pics3.png",
     title: "Get on top of the leaderboard",
     desc: "Earn special rewards by getting a place on the leaderboard.",
   }

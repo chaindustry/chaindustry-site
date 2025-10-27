@@ -139,7 +139,7 @@ const AmazingFeature = () => {
       className="flex justify-center mb-8 lg:mb-10"
     >
       <img
-        src="/AmazingFeaturesPics/diamond.png"
+        src="/features/diamond.png"
         alt="Upgrade Icon"
         className="w-[110px] h-[88px]"
       />
@@ -159,7 +159,7 @@ const AmazingFeature = () => {
       </button>
 
       <img
-        src="/AmazingFeaturesPics/hand.png"
+        src="/features/hand.png"
         alt="Hand"
         className="absolute right-[-35px] bottom-[-20px] w-[70px] h-[69px] object-contain z-10"
       />
@@ -190,7 +190,7 @@ const AmazingFeature = () => {
     className="cards md:col-span-1 bg-[#180635] rounded-2xl border border-white/10 hover:border-white/30 transition duration-300 p-6 sm:p-8 flex flex-col"
   >
     <img
-      src="/AmazingFeaturesPics/keyboard.png"
+      src="/features/keyboard.png"
       alt="Campaign Background"
       className="w-full h-52 object-contain rounded-t-2xl relative left-5 brightness-[0.75]"
     />

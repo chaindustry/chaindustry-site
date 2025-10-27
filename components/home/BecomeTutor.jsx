@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+
 const BecomeTutor = () => {
   // Reusable fade-up variant
   const fadeUp = {
@@ -71,7 +72,7 @@ const BecomeTutor = () => {
 
           {/* Floating Tutor Image */}
           <motion.img
-            src="/AmazingFeaturesPics/Tutor.png"
+            src="/features/Tutor.png"
             alt="Tutor"
             initial={{ y: 15, opacity: 0.8 }}
             whileInView={{ y: 0, opacity: 1 }}
