@@ -126,7 +126,7 @@ const ExploreSec = () => {
       {/* Hover / Tap Hint */}
       <div className="text-center mb-6">
         <p className="hidden lg:block text-sm text-gray-400 animate-pulse">
-          💡 Hover on a card to chat
+          💡 Hover on a card to see chat
         </p>
         <p className="lg:hidden text-sm text-gray-400 animate-pulse">
           💡 Tap a card to see more
