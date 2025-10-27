@@ -1,49 +1,91 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import ChatIcon from "./card/ChatIcon";
 
 const fadeIn = (direction = "up", delay = 0) => ({
-  hidden: {
-    opacity: 0,
-    y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-    x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
-  },
+  hidden: { opacity: 0, y: direction === "up" ? 40 : -40 },
   show: {
     opacity: 1,
     y: 0,
-    x: 0,
     transition: { duration: 0.8, delay, ease: "easeOut" },
   },
 });
 
+const cards = [
+  { title: "Academy", icon: "/Explore/academy.png" },
+  { title: "Blog/Vlog", icon: "/Explore/blog.png" },
+  { title: "Commitments", icon: "/Explore/invest.png" },
+];
+
 const ExploreSec = () => {
   const [active, setActive] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [expandedCard, setExpandedCard] = useState(null);
 
-  // 👁️ Detect when section is in view
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.3, once: false });
 
-  // 🎛️ Control animations manually
   const circleControls1 = useAnimation();
   const circleControls2 = useAnimation();
 
+  const descriptions = {
+    DoToEarn: "Complete simple on-chain tasks and earn rewards instantly.",
+    Academy: "Learn blockchain, DeFi, and Web3 from curated experts.",
+    "Blog/Vlog": "Stay updated with Web3 trends, news, and educational videos.",
+    Commitments: "Invest or stake in ecosystem projects and earn yields.",
+    Servicing: "Access ChainDustry's service marketplace and developer tools.",
+  };
+
+  // 🔹 Animate glowing motion when section is visible
   useEffect(() => {
     if (isInView) {
-      // Resume animation when visible
       circleControls1.start({
         offsetDistance: ["0%", "100%"],
-        transition: { duration: active ? 1.5 : 3, repeat: Infinity, ease: "linear" },
+        transition: { duration: 3, repeat: Infinity, ease: "linear" },
       });
       circleControls2.start({
         offsetDistance: ["0%", "100%"],
-        transition: { duration: active ? 2 : 4, repeat: Infinity, ease: "linear", delay: 0.3 },
+        transition: { duration: 4, repeat: Infinity, ease: "linear", delay: 0.3 },
       });
     } else {
-      // Pause animation when out of view
       circleControls1.stop();
       circleControls2.stop();
     }
-  }, [isInView, active]);
+  }, [isInView]);
+
+  // 🔹 Move the glow ball along the path on hover
+  useEffect(() => {
+    if (hoveredCard) {
+      circleControls1.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+      circleControls2.start({
+        offsetDistance: ["100%", "0%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+    } else {
+      circleControls1.start({
+        offsetDistance: ["100%", "0%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+      circleControls2.start({
+        offsetDistance: ["0%", "100%"],
+        transition: { duration: 1.2, ease: "easeInOut" },
+      });
+    }
+  }, [hoveredCard]);
+
+  // 🔹 Auto-demo: briefly show one chat balloon after entering viewport
+  useEffect(() => {
+    const timer1 = setTimeout(() => setHoveredCard("DoToEarn"), 1000);
+    const timer2 = setTimeout(() => setHoveredCard(null), 3500);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <section
@@ -55,72 +97,123 @@ const ExploreSec = () => {
         variants={fadeIn("up", 0.2)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true }}
         className="bg-[#FFFFFF1A] px-4 py-1 rounded-[10px] w-fit mb-6"
       >
-        <p className="text-sm font-medium tracking-wide">Chaindustry Ecosystem</p>
+        <p className="text-sm font-medium tracking-wide">
+          Chaindustry Ecosystem
+        </p>
       </motion.div>
 
-      {/* Headings */}
+      {/* Heading */}
       <motion.h1
         variants={fadeIn("up", 0.3)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{once: 'true', amount: 0.4}}
         className="text-4xl sm:text-5xl font-bold leading-[1.2] pb-[2px] bg-gradient-to-tr from-white to-gray-400 bg-clip-text text-transparent"
       >
         Explore ChainDustry
       </motion.h1>
       <motion.h1
         variants={fadeIn("up", 0.4)}
+        viewport={{once: 'true', amount: 0.4}}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.4 }}
         className="text-4xl sm:text-5xl font-bold mb-12 leading-[1.2] bg-gradient-to-tr from-white to-gray-400 bg-clip-text text-transparent"
       >
         Ecosystem
       </motion.h1>
 
+      {/* Hover / Tap Hint */}
+      <div className="text-center mb-6">
+        <p className="hidden lg:block text-sm text-gray-400 animate-pulse">
+          💡 Hover on a card to see chat
+        </p>
+        <p className="lg:hidden text-sm text-gray-400 animate-pulse">
+          💡 Tap a card to see more
+        </p>
+      </div>
+
       {/* Diagram Container */}
       <div
-        className={`relative bg-[#18063580] rounded-3xl p-12 flex flex-col items-center justify-center transition-all duration-500 ${
+        className={`relative bg-[#18063580] rounded-3xl p-6 sm:p-12 md:p-16 flex flex-col items-center justify-center transition-all duration-500 ${
           active ? "energy-active" : ""
         }`}
       >
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-b bg-radial-fade opacity-40" />
+        {/* Chat balloon for lg only */}
+        <div className="hidden lg:block">
+          {hoveredCard && <ChatIcon text={descriptions[hoveredCard]} />}
+        </div>
 
-        {/* Top Card */}
-        <motion.div variants={fadeIn("up", 0.5)} initial="hidden" whileInView="show" viewport={{once: true, amount: (0.4)}}>
+        {/* Top card */}
+        <motion.div
+          variants={fadeIn("up", 0.5)}
+          viewport={{ once: true, amount: 0.4 }}
+          initial="hidden"
+          whileInView="show"
+          className="mb-10 sm:mb-16 w-full max-w-xs sm:max-w-sm md:max-w-none flex justify-center"
+        >
           <Card
             title="DoToEarn"
             icon="/Explore/Dollar.png"
-            className="mb-16"
-            onHover={() => setActive(true)}
-            onLeave={() => setActive(false)}
+            description={descriptions["DoToEarn"]}
+            onHover={() => setHoveredCard("DoToEarn")}
+            onLeave={() => setHoveredCard(null)}
+            expandedCard={expandedCard}
+            setExpandedCard={setExpandedCard}
+            hoveredCard={hoveredCard}
           />
         </motion.div>
 
-        {/* Middle Row */}
+        {/* Middle cards */}
         <motion.div
           variants={fadeIn("up", 0.6)}
+          viewport={{ once: true, amount: 0.4 }}
           initial="hidden"
           whileInView="show"
-           viewport={{once: true, amount: (0.4)}}
-          className="relative z-10 flex flex-wrap md:flex-nowrap justify-center items-center gap-12 mb-16 w-full max-w-3xl"
+          className="relative z-10 flex flex-col md:flex-wrap md:flex-row lg:flex-nowrap justify-center items-center gap-6 sm:gap-10 mb-10 sm:mb-16 w-full max-w-3xl"
         >
-          <Card title="Academy" icon="/Explore/academy.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
-          <Card title="Blog/Vlog" icon="/Explore/blog.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
-          <Card title="Commitments" icon="/Explore/invest.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
+          {cards.map(({ title, icon }) => (
+            <Card
+              key={title}
+              title={title}
+              icon={icon}
+              description={descriptions[title]}
+              onHover={() => setHoveredCard(title)}
+              onLeave={() => setHoveredCard(null)}
+              expandedCard={expandedCard}
+              setExpandedCard={setExpandedCard}
+              hoveredCard={hoveredCard}
+            />
+          ))}
         </motion.div>
 
-        {/* Bottom Card */}
-        <motion.div variants={fadeIn("up", 0.7)} initial="hidden" whileInView="show"  viewport={{once: true, amount: (0.4)}}>
-          <Card title="Servicing" icon="/Explore/service.png" onHover={() => setActive(true)} onLeave={() => setActive(false)} />
+        {/* Bottom card */}
+        <motion.div
+          variants={fadeIn("up", 0.7)}
+          viewport={{ once: true, amount: 0.4 }}
+          initial="hidden"
+          whileInView="show"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-none flex justify-center"
+        >
+          <Card
+            title="Servicing"
+            icon="/Explore/service.png"
+            description={descriptions["Servicing"]}
+            onHover={() => setHoveredCard("Servicing")}
+            onLeave={() => setHoveredCard(null)}
+            expandedCard={expandedCard}
+            setExpandedCard={setExpandedCard}
+            hoveredCard={hoveredCard}
+          />
         </motion.div>
 
-        {/* ⚡ Connection Lines + Moving Light Particles */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          {/* Line 1 */}
+        {/* SVG connections */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <motion.path
             d="M50 300 C350 100, 650 100, 950 300"
             stroke="#FF2D55"
@@ -140,8 +233,6 @@ const ExploreSec = () => {
             }}
             animate={circleControls1}
           />
-
-          {/* Line 2 */}
           <motion.path
             d="M150 450 C400 250, 600 250, 850 450"
             stroke="#FF2D55"
@@ -161,8 +252,6 @@ const ExploreSec = () => {
             }}
             animate={circleControls2}
           />
-
-          {/* Glow filter */}
           <defs>
             <filter id="glow">
               <feGaussianBlur stdDeviation="4" result="coloredBlur" />
@@ -174,45 +263,65 @@ const ExploreSec = () => {
           </defs>
         </svg>
       </div>
+
+      {/* Custom animations */}
+      <style>
+        {`
+          @keyframes pulseSlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+          }
+          .animate-pulse-slow {
+            animation: pulseSlow 2.5s infinite ease-in-out;
+          }
+        `}
+      </style>
     </section>
   );
 };
 
 // === Card Component ===
-const Card = ({ title, icon, className, onHover, onLeave }) => {
-  const cardRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    card.style.setProperty("--x", `${x}%`);
-    card.style.setProperty("--y", `${y}%`);
-
-    const mouseX = e.clientX - rect.left - rect.width / 2;
-    const mouseY = e.clientY - rect.top - rect.height / 2;
-    let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
-    angle = (angle + 360) % 360;
-    card.style.setProperty("--start", angle + "deg");
-  };
-
+const Card = ({
+  title,
+  icon,
+  description,
+  onHover,
+  onLeave,
+  expandedCard,
+  setExpandedCard,
+  hoveredCard,
+}) => {
+  const isExpanded = expandedCard === title;
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
+      onClick={() =>
+        window.innerWidth < 1024 && setExpandedCard(isExpanded ? null : title)
+      }
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
-      className={`relative z-20 rounded-xl bg-radial-fade px-10 py-4 border border-white/10 flex items-center justify-center gap-3 transition-all duration-300 shadow-[0_0_15px_#FF2D55]/20 min-w-[200px] sm:min-w-[230px] text-center cursor-pointer glow-card ${className}`}
+      className={`relative z-20 rounded-xl bg-radial-fade px-6 py-4 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all duration-300 
+      shadow-[0_0_15px_#FF2D55]/20 min-w-[180px] sm:min-w-[230px] text-center cursor-pointer
+      ${
+        hoveredCard === title
+          ? "animate-none"
+          : "animate-pulse-slow hover:shadow-[0_0_25px_#FF2D55]/40"
+      }`}
     >
-      <div className="glow" />
-      <img src={icon} alt={title} className="w-6 h-6" />
-      <p className="font-medium text-sm sm:text-base">{title}</p>
+      <div className="flex items-center gap-3 justify-center">
+        <img src={icon} alt={title} className="w-6 h-6" />
+        <p className="font-medium text-sm sm:text-base">{title}</p>
+      </div>
+      {isExpanded && (
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-xs sm:text-sm text-gray-300 mt-2 max-w-[250px]"
+        >
+          {description}
+        </motion.p>
+      )}
     </motion.div>
   );
 };

@@ -147,12 +147,13 @@ const OnBoard = () => {
                 className="max-w-[283px] shrink-0
                 md:max-w-[323px]
                 lg:max-w-[419px]
+                flex flex-col mx-auto md:mx-0
             "
               >
                 <div
                   className="font-sfBold text-[32px] leading-[40px] tracking-[-0.06em] mb-[24px]
                 lg:text-[40px] lg:leading-[50px] lg:tracking-[-0.06em]
-                2xl:text-[48px] xl:leading-[60px] 2xl:tracking-[-0.06em]
+                2xl:text-[48px] xl:leading-[60px] 2xl:tracking-[-0.06em] 
                 
                 "
                 >
