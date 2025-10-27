@@ -118,7 +118,7 @@ const AmazingFeature = () => {
         ))}
       </motion.div>
 
-      {/* === Lower Cards === */}
+      {/* === Lower Cards  yeah === */}
       <motion.div
         variants={container}
         initial="hidden"
