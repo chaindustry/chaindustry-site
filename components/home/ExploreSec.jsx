@@ -110,12 +110,14 @@ const ExploreSec = () => {
         variants={fadeIn("up", 0.3)}
         initial="hidden"
         whileInView="show"
+        viewport={{once: 'true', amount: 0.4}}
         className="text-4xl sm:text-5xl font-bold leading-[1.2] pb-[2px] bg-gradient-to-tr from-white to-gray-400 bg-clip-text text-transparent"
       >
         Explore ChainDustry
       </motion.h1>
       <motion.h1
         variants={fadeIn("up", 0.4)}
+        viewport={{once: 'true', amount: 0.4}}
         initial="hidden"
         whileInView="show"
         className="text-4xl sm:text-5xl font-bold mb-12 leading-[1.2] bg-gradient-to-tr from-white to-gray-400 bg-clip-text text-transparent"
