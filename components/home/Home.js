@@ -280,7 +280,7 @@ const Home = () => {
              lg:text-[72px] lg:leading-[91px]"
           variants={fadeUp(0.2)}
         >
-          DoToEarn with chaindustry.
+          DoToEarn with Chaindustry.
         </motion.div>
 
         <motion.span
@@ -289,7 +289,7 @@ const Home = () => {
           lg:text-[24px]  lg:max-w-[587px] lg:leading-[36px]"
           variants={fadeUp(0.3)}
         >
-          Participate in our DoToearn ecosystem and earn awesome rewards.
+          Participate in our DoToEarn ecosystem and earn awesome rewards.
         </motion.span>
       </motion.div>
 
@@ -328,7 +328,7 @@ const Home = () => {
         <div
           id="anim-cont"
           className={`
-          h-[281px] w-full flex flex flex-col items-center 
+          h-[281px] w-full flex flex-col items-center 
             relative 
           md:h-[400px]
            lg:h-[730px]
