@@ -70,7 +70,7 @@ const BecomeTutor = () => {
             className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-pink-600 via-purple-600 to-orange-400 blur-[1px] shadow-[0_0_80px_20px_rgba(236,72,153,0.25)]"
           ></motion.div>
 
-          {/* Floating Tutor Image */}
+          {/* Floating Tutor Image and fixed */}
           <motion.img
             src="/features/tutor.png"
             alt="Tutor"
