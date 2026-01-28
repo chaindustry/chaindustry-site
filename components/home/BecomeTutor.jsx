@@ -72,7 +72,7 @@ const BecomeTutor = () => {
 
           {/* Floating Tutor Image */}
           <motion.img
-            src="/features/Tutor.png"
+            src="/features/tutor.png"
             alt="Tutor"
             initial={{ y: 15, opacity: 0.8 }}
             whileInView={{ y: 0, opacity: 1 }}
